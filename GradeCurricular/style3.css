@@ -1,0 +1,168 @@
+/*navbar*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Vina+Sans&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins,Arial, Helvetica, sans-serif;
+}
+.navbar{
+    background-color: #0055A3;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+.navbar ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:3%;
+    margin-right: 3%;
+    padding: 5px;
+}
+.navbar .links{
+    display: flex;
+    gap: 20px;
+    align-items: center; 
+}
+.navbar .links a{
+    text-decoration: none;
+    color: white; 
+}
+.navbar .entrar{
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 2px 2px 6px 1px ;
+
+}
+.navbar .entraricon{
+    display: flex;
+    gap: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-items: center;
+}
+.navbar .links a:hover{
+    transition: 0.4s;
+    color: rgba(255, 255, 255, 0.219);
+}
+
+/* Pagina */
+#titulo {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffffe0;
+    text-align: center;
+    padding-top: 2%;
+} 
+
+#subtitulo {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffffe0;
+    text-align: center;
+} 
+
+fieldset{
+    border: 0;
+    display: inline-block; 
+}
+
+body{
+    font-size: 1em;
+    color: #17293D;
+    text-align: center;
+    background-image: url(./img/img\ de\ fundo.jpg);
+    background-size: 100%;
+    
+}
+
+input, select, textarea, button {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color:#17293D;
+    border-radius: 5px;
+}
+
+.campo {
+    margin-bottom: 1em;
+    padding-bottom: 5%;
+}
+
+.campo label{
+    margin-bottom: 0.2em;
+    color: #17293D;
+    display: block;
+}
+
+.campo select, .campo textarea {
+    padding: 0.1em;
+    border: 1px solid ;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+.formulario {
+    width: 40%;
+    border: 1px solid black;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.561);
+    display: inline-block;
+}
+
+.button1{
+    border:1px solid black; 
+    padding: 10px 20px; 
+    background: #17293D; 
+    color: white;
+    border-radius:6px; 
+    font-size: 20px; 
+    font-family:helvetica, serif;
+    text-decoration:none;
+    box-shadow: 1px 1px 6px 0px black;
+}
+
+.button2{
+    order:1px solid black; 
+    padding: 10px 20px; 
+    background: #17293D; 
+    color: white;
+    border-radius:6px; 
+    font-size: 20px; 
+    font-family:helvetica, serif;
+    text-decoration:none;
+    box-shadow: 1px 1px 6px 0px black;
+}
+
+.button3{
+    border:1px solid black; 
+    padding: 10px 20px; 
+    background: #17293D; 
+    color: white;
+    border-radius:6px; 
+    font-size: 20px; 
+    font-family:helvetica, serif;
+    text-decoration:none;
+    box-shadow: 1px 1px 6px 0px black;
+    float:right;
+    margin-right: 70px;
+    margin-top: -30px;
+}
+
+.button1:hover {
+    background: #F21A24;
+    text-shadow: none;
+}
+
+.button2:hover {
+    background: #F21A24;
+    text-shadow: none;
+}
+
+.button3:hover {
+    background: #F21A24;
+    text-shadow: none;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="cadastro-1.css" class="css">
+</head>
+<body>
+    
+    <div class="conteudo-1">
+        <div class="cadastro">
+                <div class="itens-form">
+                    <form action="processa_cadastro.php" method="post">
+                        <h1>CADASTRO DE USUÁRIO</h1>
+                        
+                        <div class="input-2">
+                            <input type="text" id="nome" name="nome" required class="inputS">
+                            <label for="nome">Nome</label>
+                        </div>
+                        <div class="input-2">
+                            <input type="text" id="cpf" name="cpf" required class="inputS">
+                            <label for="cpf">CPF:</label>
+                        </div>
+                        <div class="input-2" class="selecao">
+                            <label for="sexo" >Selecione o Sexo</label>
+                            <select id="sexo" name="sexo" required class="input-4">
+                                <option value=""></option>
+                                <option value="Masculino" class="op">Masculino</option>
+                                <option value="Feminino" class="op">Feminino</option>
+                                <option value="Outro" class="op">Outro</option>
+                            </select>
+                        </div>
+                        <div class="input-2" class="selecao">
+                            <label for="cursos">Selecione o Curso</label>
+                            <select id="cursos" name="cursos" required class="input-4">
+                                <option value="" class="op"></option>
+                                <option value="401" class="op">Administração</option>
+                                <option value="402" class="op">Direito</option>
+                                <option value="403" class="op">Enfermagem</option>
+                                <option value="404" class="op">Estética e Coméstica</option>
+                                <option value="405" class="op">Fisioterapia</option>
+                                <option value="406" class="op">Gastronomia</option>
+                                <option value="407" class="op">Gestão de RH</option>
+                                <option value="408" class="op">Logística</option>
+                                <option value="409" class="op">Nutrição</option>
+                                <option value="410" class="op">Sistemas de Informação</option>
+                            </select>
+                        </div>
+                        <div class="input-2">
+                            <input type="text" id="telefone" name="telefone" required class="inputS">
+                            <label for="telefone">Telefone</label>
+                        </div>
+                        <div class="input-2">
+                            <input type="text" id="endereco" name="endereco" required class="inputS">
+                            <label for="endereco">Endereço</label>
+                        </div>
+                        <div class="input-2">
+                            <input type="text" id="uf" name="uf" required class="inputS">
+                            <label for="uf">UF</label>
+                        </div>
+                        <div class="input-2">
+                            <input type="text" id="cidade" name="cidade" required class="inputS">
+                            <label for="cidade">Cidade</label>
+                        </div>
+                        <div class="input-2">
+                            <input type="date" id="data_nascimento" name="data_nascimento" required class="inputS">
+                            <label for="data_nascimento"></label>
+                        </div>
+                        <div class="input-2">
+                            <input type="email" id="email" name="email" required class="inputS">
+                            <label for="email">E-mail</label>
+                        </div>
+                        <div class="input-2">
+                            <input type="password" id="senha" name="senha" required class="inputS">
+                            <label for="senha">Senha</label>
+                        </div>
+                        <div class="input-2"><input type="submit" value="Cadastrar" class="btn-1"></div>
+                        <div class="input-2"><button><a href="../login/login.html">Login</a></button></div>
+                </form>
+                </div>
+        </div>
+    </div>
+    
+</body>
+</html>

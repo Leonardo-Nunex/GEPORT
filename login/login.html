@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="usericon"><img src="../login/assets/User.png" width="50px"></div>
+   
+    <div class="senhaicon"><img src="../login/assets/Password.png" width="50px"></div>
+   
+    <div class="logo"><img src="../login/assets/logo.png"></div>
+    
+    <div class="wrapper">
+        <form action="processa_login.php" method="post">
+
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="email" placeholder="Matricula" required name="email">
+                <i class='bx bx-user'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password"
+                placeholder="Senha" required name="senha">
+                <i class='bx bx-lock-open-alt' ></i>
+            </div>
+            
+            <div class="remember-forgot">
+                <label><input type="checkbox">Lembrar senha</label>
+                <a href="../cadastro/Cadastro.html">Cadastrar</a>
+            </div>
+
+            <button type="submit" class="btn" > ACESSAR </button>
+    </form>
+   </div>
+</body>
+</html>
