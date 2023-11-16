@@ -1,0 +1,118 @@
+/*navbar*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Vina+Sans&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins,Arial, Helvetica, sans-serif;
+}
+.navbar{
+    background-color: #0055A3;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+.navbar ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:3%;
+    margin-right: 3%;
+    padding: 5px;
+}
+.navbar .links{
+    display: flex;
+    gap: 20px;
+    align-items: center; 
+}
+.navbar .links a{
+    text-decoration: none;
+    color: white; 
+}
+.navbar .entrar{
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 2px 2px 6px 1px ;
+
+}
+.navbar .entraricon{
+    display: flex;
+    gap: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-items: center;
+}
+.navbar .links a:hover{
+    transition: 0.4s;
+    color: rgba(255, 255, 255, 0.219);
+}
+
+/* Pagina */
+#titulo {
+    font-family:Arial, Helvetica, sans-serif;
+    color: #17293D;
+    text-align: center;
+    margin-top: 5%;
+} 
+
+#subtitulo {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17293D;
+    text-align: center;
+}
+
+body{
+    background-image: url(./img/img\ de\ fundo.jpg);
+    background-size: 100%;
+}
+
+#divs{
+    width: 40%;
+    border: 1px solid black;
+    padding-bottom: 20px;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.561);
+
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+#link_1{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17293D;
+    text-align: center;
+    margin-top: 3%;
+}
+
+#link_2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17293D;
+    text-align: center;
+    margin-top: 1%;
+}
+
+#botao {
+    font-size: 1.2em;
+    background: #17293D;
+    border: 0;
+    color: #ffffff;
+    padding: 0.2em 0.6em;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+#botao:hover {
+    background: #F21A24;
+
+    text-shadow: none;
+}
+
+#botao{
+    cursor: pointer;
+}

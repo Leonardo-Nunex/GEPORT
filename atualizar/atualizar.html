@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="atualizar.css">
+    <title>Atualização de Cadastro
+    </title>
+</head>
+<body>
+    <div class="conteudo-1">
+        <div class="cadastro">
+            <div class="itens-form">
+                <form action="atualizar_dados.php" method="post">
+                    <h1>ATUALIZAR CADASTRO</h1>
+                    <div class="input-2">
+                        <input type="text"
+                        class="inputS" required name="nome_usuario">
+                        <i class='bx bx-user'></i>
+                        <label for="nome">Nome</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="number"
+                        class="inputS" required name="cpf">
+                        <i class='bx bx-user'></i>
+                        <label for="cpf">CPF:</label>
+                    </div>
+                    <div class="input-2" class="selecao">
+                        <label for="sexo" >Selecione o Sexo</label>
+                        <select id="sexo" name="sexo" required class="input-4">
+                            <option value=""></option>
+                            <option value="Masculino" class="op">Masculino</option>
+                            <option value="Feminino" class="op">Feminino</option>
+                            <option value="Outro" class="op">Outro</option>
+                        </select>
+                    </div>
+                    <div class="input-2" class="selecao">
+                        <label for="Cursos">Selecione o Curso</label>
+                        <select id="Cursos" name="Cursos" required class="input-4">
+                            <option value="" class="op"></option>
+                            <option value="Administração" class="op">Administração</option>
+                            <option value="Direito" class="op">Direito</option>
+                            <option value="Enfermagem" class="op">Enfermagem</option>
+                            <option value="Estética e Coméstica" class="op">Estética e Coméstica</option>
+                            <option value="Fisioterapia" class="op">Fisioterapia</option>
+                            <option value="Gastronomia" class="op">Gastronomia</option>
+                            <option value="Gestão de RH" class="op">Gestão de RH</option>
+                            <option value="Logística" class="op">Logística</option>
+                            <option value="Nutrição" class="op">Nutrição</option>
+                            <option value="Sistemas de Informação" class="op">Sistemas de Informação</option>
+                        </select>
+                    </div>
+                    <div class="input-2">
+                        <input type="tel"
+                        class="inputS" required name="telefone">
+                        <i class='bx bx-user'></i>
+                        <label for="telefone">Telefone</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="text"
+                        class="inputS" required name="endereco">
+                        <i class='bx bx-user'></i>
+                        <label for="endereco">Endereço</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="text"
+                        class="inputS" required name="uf">
+                        <i class='bx bx-user'></i>
+                        <label for="uf">UF</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="text"
+                        class="inputS" required name="cidade">
+                        <i class='bx bx-user'></i>
+                        <label for="cidade">Cidade</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="date"
+                        class="inputS" required name="data_nascimento">
+                        <i class='bx bx-user'></i>
+                        <label for="data_nascimento"></label>
+                    </div>
+                    <div class="input-2">
+                        <input type="email"
+                        class="inputS" required name="email">
+                        <i class='bx bx-user'></i>
+                        <label for="email">E-mail</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="password"
+                        class="inputS" required name="senha">
+                        <i class='bx bx-user'></i>
+                        <label for="senha">Senha</label>
+                    </div>
+                    <div class="input-2">
+                        <input type="submit"
+                        name="update" required placeholder="Update Data">
+                        <i class='bx bx-user'></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+</body>
+</html>

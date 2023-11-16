@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Vina+Sans&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins,Arial, Helvetica, sans-serif;
+}
+body{
+    background-image: url(src/logo1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+    
+}
+.cadastro{
+    background:#08687E;
+    max-width: 600px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 5px 5px 10px black;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.itens-form .input-2{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 5px;
+}
+.cadastro h1{
+    justify-content: center;
+    display: flex;
+    color: white;
+    padding: 0px;
+    
+}
+.conteudo-1{
+    margin-top: 20px;
+
+}
+.input-2 label{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color:rgba(255, 255, 255, 0.37);
+    transition: 0.4s;
+    cursor: text;
+}
+.inputS{
+    width: 100%;
+    height: 30px;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 1.2em;
+    
+}
+.input-2{
+    position: relative;
+    margin: 20px 0;
+}
+.input-2 .inputS:focus ~ label,
+.input-2 .inputS:valid ~ label{
+    transform: translateY(-24px);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.37);
+}
+.btn{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    
+}
+form input[type=submit]{
+    padding: 10px 40px;
+    border: 0;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.6em;
+
+
+}    
+
+.op{
+    color: rgba(0, 0, 0, 0.37);
+}
+.opcoes{
+    padding: 10px;    
+}
+#sexo{
+    font-size: 1.2em;
+}
+.input-2 a{
+    text-decoration: none;
+    padding: 15px;
+    color: black;
+    font-family: Poppins,Arial, Helvetica, sans-serif;
+
+}
+.input-4{
+    width: 250px;
+    height: 30px;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 1.2em;
+}
