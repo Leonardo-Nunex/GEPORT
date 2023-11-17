@@ -20,17 +20,24 @@ try {
         $stmt->execute();
 
         $result = $stmt->fetchAll();
+        
+        $teste = $result[0][1];
 
-        if ($stmt->rowCount() == 1) {
-            foreach ($result as $row) {
-                foreach ($row as $key => $value) {
-                    echo $key . ': ' . $value . '<br>'; // Mostra chave e valor
-                }
-                echo '<br>'; // Quebra para a próxima linha
-            }
-        } else {
-            echo "Nenhum usuário encontrado com esse email.";
-        }
+        echo "<input type='text' required name='nome_usuario' value='$teste';>";
+
+        
+        echo $result[0][2];
+
+        echo $result[0][3];
+
+        echo $result[0][4];
+
+        echo $result[0][5];
+
+        echo $result[0][6];
+
+
+        
     } else {
         echo "O email não está definido na sessão.";
     }
