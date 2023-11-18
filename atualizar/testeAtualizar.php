@@ -7,10 +7,23 @@ if (isset($_SESSION['matricula_usuario'])) {
     $matricula_usuario = $_SESSION['matricula_usuario'];
 
     // Consulta para obter os dados do usuário
-    $query = "SELECT * FROM usuario WHERE matricula_usuario = :matricula_usuario";
-    $pdoResult = $conexao->prepare($query);
-    $pdoResult->execute(array(":matricula_usuario" => $matricula_usuario));
-    $dadosDoUsuario = $pdoResult->fetch(PDO::FETCH_ASSOC);
+    $queryUsuario = "SELECT * FROM usuario WHERE matricula_usuario = :matricula_usuario";
+    $pdoResultUsuario = $conexao->prepare($queryUsuario);
+    $pdoResultUsuario->execute(array(":matricula_usuario" => $matricula_usuario));
+    $dadosDoUsuario = $pdoResultUsuario->fetch(PDO::FETCH_ASSOC);
+
+    // Consulta para obter os dados do curso
+    $queryCurso = "SELECT * FROM cursos WHERE codigo = :codigo_curso_fk";
+    $pdoResultCurso = $conexao->prepare($queryCurso);
+    $pdoResultCurso->execute(array(":codigo_curso_fk" => $dadosDoUsuario['codigo_curso_fk']));
+    $dadosDoCurso = $pdoResultCurso->fetch(PDO::FETCH_ASSOC);
+
+    if ($dadosDoCurso) {
+        $nome = $dadosDoCurso['nome'];
+    } else {
+        echo 'Erro ao recuperar o nome do curso.';
+        exit;
+    }
 
     if ($dadosDoUsuario) {
         // Preencha as variáveis com os dados do usuário
@@ -73,17 +86,17 @@ if (isset($_SESSION['matricula_usuario'])) {
                     <div class="input-2" class="selecao">
                         <label for="Cursos">Selecione o Curso</label>
                         <select id="Cursos" name="Cursos" required class="input-4">
-                            <option value="" class="op"></option>
-                            <option value="Administração" class="op">Administração</option>
-                            <option value="Direito" class="op">Direito</option>
-                            <option value="Enfermagem" class="op">Enfermagem</option>
-                            <option value="Estética e Coméstica" class="op">Estética e Coméstica</option>
-                            <option value="Fisioterapia" class="op">Fisioterapia</option>
-                            <option value="Gastronomia" class="op">Gastronomia</option>
-                            <option value="Gestão de RH" class="op">Gestão de RH</option>
-                            <option value="Logística" class="op">Logística</option>
-                            <option value="Nutrição" class="op">Nutrição</option>
-                            <option value="Sistemas de Informação" class="op">Sistemas de Informação</option>
+                            <option value="" class="op"><?php echo $nome;?></option>
+                            <option value="401" class="op">Administração</option>
+                            <option value="402" class="op">Direito</option>
+                            <option value="403" class="op">Enfermagem</option>
+                            <option value="404" class="op">Estética e Coméstica</option>
+                            <option value="405" class="op">Fisioterapia</option>
+                            <option value="406" class="op">Gastronomia</option>
+                            <option value="407" class="op">Gestão de RH</option>
+                            <option value="408" class="op">Logística</option>
+                            <option value="409" class="op">Nutrição</option>
+                            <option value="410" class="op">Sistemas de Informação</option>
                         </select>
                     </div>
                     <div class="input-2">
