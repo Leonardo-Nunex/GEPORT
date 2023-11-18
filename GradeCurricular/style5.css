@@ -31,14 +31,14 @@
     text-decoration: none;
     color: white; 
 }
-.navbar .entrar{
+.navbar .perfil{
     padding: 10px;
     border-radius: 8px;
     display: flex;
     box-shadow: 2px 2px 6px 1px ;
 
 }
-.navbar .entraricon{
+.navbar .perfilIcon{
     display: flex;
     gap: 10px;
     margin-left: 40px;

@@ -31,28 +31,25 @@
     text-decoration: none;
     color: white; 
 }
-.navbar .entrar{
+.navbar .perfil{
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 100px;
     display: flex;
-    box-shadow: 2px 2px 6px 1px ;
+    box-shadow: 2px 1px 8px 1px ;
+    background: #ffffff;
 
 }
-.navbar .entraricon{
+.navbar .perfilIcon{
+
     display: flex;
-    gap: 10px;
-    margin-left: 40px;
-    margin-right: 40px;
-    align-items: center;
 }
 .navbar .links a:hover{
     transition: 0.4s;
     color: rgba(255, 255, 255, 0.219);
 }
-
 /* Pagina */
 #titulo {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Poppins, Helvetica, sans-serif;
     color: #17293D;
     text-align: center;
     margin-top: 5%;
@@ -65,7 +62,7 @@
 }
 
 body{
-    background-image: url(./img/img\ de\ fundo.jpg);
+    background-image: url(img/background.png);
     background-size: 100%;
 }
 
@@ -99,7 +96,7 @@ body{
 
 #botao {
     font-size: 1.2em;
-    background: #17293D;
+    background: #1F71B4;
     border: 0;
     color: #ffffff;
     padding: 0.2em 0.6em;
@@ -108,7 +105,7 @@ body{
 }
 
 #botao:hover {
-    background: #F21A24;
+    background: #57B5CD;
 
     text-shadow: none;
 }
