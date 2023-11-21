@@ -31,25 +31,22 @@
     text-decoration: none;
     color: white; 
 }
-.navbar .entrar{
+.navbar .perfil{
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 100px;
     display: flex;
-    box-shadow: 2px 2px 6px 1px ;
+    box-shadow: 2px 1px 8px 1px ;
+    background: #ffffff;
 
 }
-.navbar .entraricon{
+.navbar .perfilIcon{
+
     display: flex;
-    gap: 10px;
-    margin-left: 40px;
-    margin-right: 40px;
-    align-items: center;
 }
 .navbar .links a:hover{
     transition: 0.4s;
     color: rgba(255, 255, 255, 0.219);
 }
-
 /* Pagina */
 #titulo {
     font-family: Arial, Helvetica, sans-serif;
@@ -73,8 +70,10 @@ body{
     font-size: 1em;
     color: #17293D;
     text-align: center;
-    background-image: url(./img/img\ de\ fundo.jpg);
-    background-size: 100%;
+    background-image: url(img/background.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     
 }
 
@@ -108,7 +107,6 @@ input, select, textarea, button {
     padding-bottom: 20px;
     padding-top: 10px;
     margin-bottom: 2%;
-    border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.561);
     display: inline-block;
 }
@@ -116,53 +114,51 @@ input, select, textarea, button {
 .button1{
     border:1px solid black; 
     padding: 10px 20px; 
-    background: #17293D; 
+    background: #1F71B4; 
     color: white;
     border-radius:6px; 
     font-size: 20px; 
     font-family:helvetica, serif;
     text-decoration:none;
-    box-shadow: 1px 1px 6px 0px black;
+    box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.253);
 }
 
 .button2{
-    order:1px solid black; 
+    border:1px solid black; 
     padding: 10px 20px; 
-    background: #17293D; 
+    background: #1F71B4; 
     color: white;
     border-radius:6px; 
     font-size: 20px; 
     font-family:helvetica, serif;
     text-decoration:none;
-    box-shadow: 1px 1px 6px 0px black;
+    box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.253);
 }
 
 .button3{
     border:1px solid black; 
     padding: 10px 20px; 
-    background: #17293D; 
+    background: #1F71B4; 
     color: white;
     border-radius:6px; 
     font-size: 20px; 
     font-family:helvetica, serif;
     text-decoration:none;
-    box-shadow: 1px 1px 6px 0px black;
-    float:right;
-    margin-right: 70px;
-    margin-top: -30px;
+    box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.253);
+    width: 100px;
 }
 
 .button1:hover {
-    background: #F21A24;
+    background: #57B5CD;
     text-shadow: none;
 }
 
 .button2:hover {
-    background: #F21A24;
+    background: #57B5CD;
     text-shadow: none;
 }
 
 .button3:hover {
-    background: #F21A24;
+    background: #57B5CD;
     text-shadow: none;
 }
