@@ -27,6 +27,8 @@ if ($dados) {
             ':descricao' => $_POST['descricao'],
             ':anexo' => $arquivo['name']
         );
+
+        $nome = $_SESSION['matricula_usuario'];
         
         $stmtPortfolio->execute($dadosPortfolio);
 
@@ -36,7 +38,7 @@ if ($dados) {
             $dataHoraAtual = date('Ymd_His');
             $nomeArquivo = $dataHoraAtual . "_" . $id . $arquivo["name"];
             // Ajuste no caminho de destino
-            $destino = __DIR__ . "/arquivos/arquivo" . $nomeArquivo;
+            $destino = __DIR__ . "/$nome/" . $nomeArquivo;
 
             // Verificação e criação do diretório de destino
             $dir = dirname($destino);

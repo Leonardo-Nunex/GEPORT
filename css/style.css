@@ -43,9 +43,10 @@ body{
 }
 .wrapper {
     width: 420px;
-    background:#08687E;
+    background:hsl(191, 88%, 26%);
     color: #000000;
     border-radius: 10px;
+    box-shadow: 10px 9px 10px rgba(0, 0, 0, 0.616);
     padding: 30px 40px;
 }
 
@@ -111,10 +112,13 @@ body{
     background: #0C9ABE;
     border: none;
     outline: none;
-    border-radius: 3px;
+    border-radius: 10px;
     box-shadow: 0 0 0px rgba(0, 0, 0, .1);
     cursor: pointer;
     font-size: 16px;
     color: #ffffff;
     font-weight: 600;
+}
+.wrapper h1{
+    color: white;
 }
