@@ -17,7 +17,7 @@ if (!empty($_POST)) {
             $stmtUsuario = $conexao->prepare($sqlUsuario);
 
             $dadosUsuario = array(
-                ':cursos' => $_POST['cursos'], // Converte para inteiro
+                ':cursos' => $_POST['cursos'], 
                 ':nome_usuario' => $_POST['nome'],
                 ':cpf' => $_POST['cpf'],
                 ':sexo' => $_POST['sexo'],
@@ -33,12 +33,13 @@ if (!empty($_POST)) {
 
             $stmtUsuario->execute($dadosUsuario);
             $conexao->commit();
-            header("Location: ../login/login.html?msgSucesso=Cadastro realizado com sucesso!");
+            
+            echo '<script>alert("Dados Cadastrados"); window.location="../login/login.html";</script>';
 
     } catch (PDOException $e) {
         $conexao->rollBack();
-        die($e->getMessage());
-        header("Location: Cadastro.html?msgErro=Falha ao cadastrar...");
+        echo '<script>alert("Dados já cadastrados"); window.location="../login/login.html";</script>';
+        die();
     }
 } else {
     header("Location: ../login/login.html?msgErro=Erro de acesso.");
