@@ -7,7 +7,7 @@ if (isset($_POST['update'])) {
     // Verifique se o usuário está logado
     if (isset($_SESSION['matricula_usuario'])) {
         $matricula_usuario = $_SESSION['matricula_usuario']; // Use a matrícula do usuário logado
-
+        $codigo_curso_fk = isset($_POST['Cursos']) ? $_POST['Cursos'] : null; 
         $nome_usuario = $_POST['nome_usuario'];
         $cpf = $_POST['cpf'];
         $sexo = $_POST['sexo'];
@@ -19,11 +19,12 @@ if (isset($_POST['update'])) {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
 
-        $query = "UPDATE usuario SET nome_usuario = :nome_usuario, cpf = :cpf, sexo = :sexo, telefone = :telefone, endereco = :endereco, uf = :uf, cidade = :cidade, data_nascimento = :data_nascimento, email = :email, senha = :senha WHERE matricula_usuario = :matricula_usuario";
+        $query = "UPDATE usuario SET codigo_curso_fk = :codigo_curso_fk, nome_usuario = :nome_usuario, cpf = :cpf, sexo = :sexo, telefone = :telefone, endereco = :endereco, uf = :uf, cidade = :cidade, data_nascimento = :data_nascimento, email = :email, senha = :senha WHERE matricula_usuario = :matricula_usuario";
 
         $pdoResult = $conexao->prepare($query);
 
         $pdoExec = $pdoResult->execute(array(
+            ":codigo_curso_fk" => $codigo_curso_fk,
             ":nome_usuario" => $nome_usuario,
             ":cpf" => $cpf,
             ":sexo" => $sexo,
@@ -38,7 +39,7 @@ if (isset($_POST['update'])) {
         ));
 
         if ($pdoExec) {
-            echo 'Dados atualizados';
+            header('Location: ../profile/profile.html?msgSucesso=DadosCadastrados');
         } else {
             echo 'ERRO, não foi possível atualizar seus dados';
         }
