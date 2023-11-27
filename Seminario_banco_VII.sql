@@ -17,6 +17,11 @@
 
 -- CREATE database seminario;
 
+------------------------------------------------------------------------------------------------------------
+--#############(Função gerar_num_random_user())	
+
+-- Função que gera um número que começa em 21.000.000 
+
 	
 CREATE OR REPLACE FUNCTION gerar_num_random_user()
 RETURNS INTEGER AS $$
@@ -40,16 +45,17 @@ BEGIN
     RETURN -1;
 END;
 $$ LANGUAGE plpgsql;
---#############(tabela usuario e funções)
+
 
 -- DROP FUNCTION gerar_num_random;
 
---#############(tabela curso e funções)	
+------------------------------------------------------------------------------------------------------------
+--#############(tabela cursos)	
 
 create table if not exists cursos(
 	"codigo" int primary key not null,
 	"nome" varchar(40),
-	"duracao" int --mudar no banco
+	"duracao" int 
 );
 
 INSERT INTO cursos (codigo, nome, duracao)
@@ -65,9 +71,14 @@ VALUES
   (409, 'Nutrição', 4),
   (410, 'Sistemas de Informação', 4);
 
---Função ativada para codigo de curso através de um gatilho
 
-select * from cursos;
+-- select * from cursos;
+
+
+------------------------------------------------------------------------------------------------------------
+--#############(Função/ Criar)	
+
+-- Função que é ativada por uma trigger(gatilho), com o objetivo de associar o nome do curso ao id do curso no ato do cadastro.
 
 CREATE OR REPLACE FUNCTION set_codigo_on_insert()
 RETURNS TRIGGER AS $$
@@ -94,14 +105,15 @@ CREATE TRIGGER trigger_set_codigo
 BEFORE INSERT ON cursos
 FOR EACH ROW EXECUTE FUNCTION set_codigo_on_insert();
 
--- DROP table cursos;
---#############(tabela curso e funções)
+
+------------------------------------------------------------------------------------------------------------
+--#############(Tabela professor)	
 
 
 create table if not exists professor(
 	"id_professor_pk" serial primary key NOT NULL,
-	"nome"  varchar(40), --mudar no diagrama
-	"formacao" varchar(40) --mudar no diagrama
+	"nome"  varchar(40),
+	"formacao" varchar(40) 
 );
 
 INSERT INTO professor (nome, formacao)
@@ -129,13 +141,14 @@ VALUES
 
 
 
-
+------------------------------------------------------------------------------------------------------------
+--#############(disciplina)	
 
 
 
 create table if not exists disciplina(
 	"id_disciplina_pk" serial primary key NOT NULL,	
-	"codigo_curso_fk" int,   --mudar no diagrama
+	"codigo_curso_fk" int, 
 	"nome" varchar(40),
 	"carga_horaria" int,	
 	
@@ -157,20 +170,23 @@ VALUES
     (410, 'Engenharia de software', 80),   
     (402, 'Direito Penal', 80);
 	
-select * from disciplina;
+
+
+------------------------------------------------------------------------------------------------------------
+--#############(oferta)	
 
 create table if not exists oferta (
 	"id_oferta_pk" serial primary key not null,
 	"id_disciplina_fk" int,
-	"ano_letivo" varchar(30), -- mudar no diagrama
-	"periodo" int,
+	"ano_letivo" varchar(30),
+	"periodo_oferta" int,
 	"id_professor_fk" int,
 	
 	FOREIGN KEY(id_professor_fk) references professor(id_professor_pk),
 	FOREIGN KEY(id_disciplina_fk) references disciplina(id_disciplina_pK)
 );
 
-INSERT INTO oferta (id_disciplina_fk, ano_letivo, periodo)
+INSERT INTO oferta (id_disciplina_fk, ano_letivo, periodo_oferta)
 VALUES
   (1, '2021', 1),
   (2, '2021', 2),
@@ -195,6 +211,8 @@ VALUES
 
 
 
+------------------------------------------------------------------------------------------------------------
+--#############(categoria)	
 
 	
 create table if not exists categoria (
@@ -215,6 +233,9 @@ INSERT INTO categoria (categoria) VALUES
 ('Seminário temático'),
 ('Atividade de fixação'),
 ('TDE');
+
+------------------------------------------------------------------------------------------------------------
+--#############(competencias)	
 
 
 create table if not exists competencias (
@@ -247,10 +268,13 @@ INSERT INTO competencias (competencias) VALUES
 
 
 
+------------------------------------------------------------------------------------------------------------
+--#############(usuario)	
+
 create table if not exists usuario(
-	"id_usuario_pk" serial primary key NOT NULL, 
+	"id_usuario_pk" serial unique NOT NULL, 
 	
-	"matricula_usuario" int unique DEFAULT gerar_num_random_user(),
+	"matricula_usuario" int primary key DEFAULT gerar_num_random_user(),
 	"codigo_curso_fk" int not null,
 	"nome_usuario" varchar(70),
 	"cpf" varchar(20) unique NOT NULL,
@@ -266,27 +290,37 @@ create table if not exists usuario(
 	FOREIGN KEY (codigo_curso_fk) REFERENCES cursos(codigo)
     );
 	
+	select * from usuario;
+	
+	
+	------------------------------------------------------------------------------------------------------------
+--#############(trabalhos)	
+	CREATE TYPE quantidade as enum ('individual','grupo');
+	
 	CREATE TABLE IF NOT EXISTS trabalhos(
-	"id_tabalho_pk" serial primary key NOT NULL, --mudar no diagrama
-	"nome" varchar(70), --mudar no diagrama
+	"id_tabalho_pk" serial primary key NOT NULL,
+	"titulo" varchar(70), 
 	"data_inicio" date NOT NULL,
 	"data_final" date NOT NULL,
-	"quantidade_pessoas" int,
-	"feedback_aluno" varchar(2000), --mudar no diagrama
-		
+	"quantidade" varchar(30),
+	"feedback_aluno" varchar(2000), 
+	"periodo_trabalhos" int,
 	"competencias_fk" int,
 	"categoria_fk" int,
 	"id_oferta_fk" int,
-		
 	"matricula_usuario_fk" int,
 	"anexo_atividade" varchar(1000),	
-	"decricao" varchar(2000),
+	"descricao" varchar(2000),
 
 	FOREIGN KEY(competencias_fk) references competencias(id_competencias),
 	FOREIGN KEY(categoria_fk) references categoria(id_categoria),
 	FOREIGN KEY(id_oferta_fk) references oferta(id_oferta_pk),
 	FOREIGN KEY(matricula_usuario_fk) references usuario(matricula_usuario)
+	
 );
+
+------------------------------------------------------------------------------------------------------------
+--#############(selects)	
 	
 
 	

@@ -4,44 +4,37 @@ require_once '../conexao/conexao.php';
 if (!empty($_POST)) {
   session_start();
   try {
-    
-      $sql = "SELECT email, senha, matricula_usuario FROM  usuario where email = :email AND senha = :senha;";
 
-      $stmt = $conexao->prepare($sql);
+    $sql = "SELECT email, senha, matricula_usuario FROM  usuario where email = :email AND senha = :senha;";
 
-      $dados = array(
-        ':email' => $_POST['email'],
-        ':senha' => $_POST['senha']
-      );
+    $stmt = $conexao->prepare($sql);
 
-      $stmt->execute($dados);
+    $dados = array(
+      ':email' => $_POST['email'],
+      ':senha' => $_POST['senha']
+    );
 
-      $result = $stmt->fetchAll();
-      
-      if($stmt->rowCount() == 1){
+    $stmt->execute($dados);
 
-        $result = $result[0];
+    $result = $stmt->fetchAll();
 
-        $_SESSION['email'] = $result['email'];
-        $_SESSION['senha'] = $result['senha'];
-        $_SESSION['matricula_usuario'] = $result['matricula_usuario'];
+    if ($stmt->rowCount() == 1) {
 
-        header('Location: ../GradeCurricular/pag1.html?msgSucesso = Deu certo');
+      $result = $result[0];
 
-      }else{
-        echo '<script>alert("Usuário ou senha inválidos!"); window.location="login.html";</script>';
-        // header('Location: login.html?msgErro = Deu errado');
-      }
+      $_SESSION['email'] = $result['email'];
+      $_SESSION['senha'] = $result['senha'];
+      $_SESSION['matricula_usuario'] = $result['matricula_usuario'];
 
-    }catch (PDOException $e) {
-      echo '<script>alert("Usuário ou senha inválidos!"); window.location="login.html";</script>';;
-      die($e->getMessage());
+      header('Location: ../GradeCurricular/Tela Inicial/TelaInicial.html?msgSucesso=SucessLogin');
+    } else {
+      echo '<script>alert("Usuário ou senha incorreta!"); window.location="login.html";</script>';
+    }
+  } catch (PDOException $e) {
+    echo '<script>alert("Erro ao acessar o banco de dados!"); window.location="login.html";</script>';
   }
-}else{
+} else {
   session_destroy();
-  echo '<script>alert("Usuário ou senha inválidos!"); window.location="login.html";</script>';;
-    // header('Location: login.html?msgErro = Sem permisão');
+  echo '<script>alert("Acesso negado"); window.location="login.html";</script>';
 }
 die();
-
-?>

@@ -12,6 +12,14 @@
     right: 0px;
     left: 0px;
 }
+body{
+    width: 100%;
+    zoom: 0.9; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    height: 150vh;
+}
+#topicos{
+   margin-top: 350px; 
+}
 .navbar ul{
     display: flex;
     flex-wrap: wrap;
@@ -52,10 +60,6 @@
     transition: 0.4s;
     color: rgba(255, 255, 255, 0.219);
 }
-body{
-    width: 100%;
-    height: 100vh;
-}
 
 .conteudo{
     display: flex;
@@ -65,16 +69,16 @@ body{
     color: #2C2C2C;
     margin-bottom: 100px;
 }
-.conteudo img{
-    padding: 50px;
+.conteudo img {
+    padding: 20px 20px 50px 50px;
     margin-right: 10px;
     width: 1000px;
-   
 }
-.borda-1{
+
+.borda-1 {
     border-left: 8px solid #2C2C2C;
     padding-left: 10px;
-    
+    margin-top: 30px;
 }
 .borda-1 h1{
     font-size: 3em;
@@ -128,8 +132,6 @@ body{
     font-family: Montserrat, Arial, Helvetica, sans-serif ;
     font-size: 3em;
     padding-top: 100px;
-   
-
 }
 
 .footer{

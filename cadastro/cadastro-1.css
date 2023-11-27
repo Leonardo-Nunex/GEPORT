@@ -6,11 +6,13 @@
     font-family: Poppins,Arial, Helvetica, sans-serif;
 }
 body{
-    background-image: url(src/logo1.png);
-    background-repeat: no-repeat;
+    background: url('../css/img/background.png') no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    min-height: 100vh;
+    overflow: hidden;
+    zoom:0.9; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    height: 100vh;
 }
 
 .cadastro {
@@ -35,6 +37,7 @@ body{
     color: rgb(255, 255, 255);
     padding: 10px;
     padding-bottom: 20px;
+    
 }
 .conteudo-1{
     justify-content: center;
@@ -59,13 +62,11 @@ body{
     background-color: rgba(0, 0, 0, 0);
     color: white;
     font-size: 1.2em;
-    
 }
 .input-2{
     position: relative;
     margin: 12px;
 }
-
 .input-2 .inputS:focus ~ label,
 .input-2 .inputS:valid ~ label{
     transform: translateY(-24px);
@@ -105,8 +106,7 @@ form input[type=submit] {
     color: black;
     font-family: Poppins,Arial, Helvetica, sans-serif;
 }
-
-.input-4{
+.input-4 {
     height: 30px;
     border: 0px;
     border-bottom: 1px solid #ccc;
@@ -126,16 +126,6 @@ form input[type=submit] {
     border: none;
     border-radius: 10px;
 }
-.btn-2{
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2em;
-    background-color: #F21A24;
-    width:30%;
-    padding: 8px;
-    border: none;
-    border-radius: 3px;
-}
 .btn-2 a{
     text-decoration: none;
     color: white;
@@ -151,11 +141,10 @@ form input[type=submit] {
 #data_nascimento{
     width: 100%;
 }
-
 .log {
     padding-left: 34px;
     width: 89%;
-  }
+}
 .log label{
     left: 10px;
     bottom: 10px;
