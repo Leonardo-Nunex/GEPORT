@@ -7,24 +7,30 @@ if (isset($_SESSION['matricula_usuario'])) {
 
     $chave = $_POST['pesquisa'];
 
-    // Consulta para obter os dados do trabalho
-    $queryTrabalho = "SELECT * FROM trabalhos WHERE titulo = :chave";
+    $queryTrabalho = "SELECT titulo, data_inicio, data_final, quantidade, competencias_fk, anexo_atividade, descricao, 
+    competencias.competencias AS nome_competencia, categoria.categoria AS nome_categoria
+    FROM trabalhos
+    LEFT JOIN competencias ON trabalhos.competencias_fk = competencias.id_competencias 
+    LEFT JOIN categoria ON trabalhos.categoria_fk = categoria.id_categoria
+    WHERE trabalhos.titulo = :chave;";
+
     $pdoResultTrabalho = $conexao->prepare($queryTrabalho);
+
     $pdoResultTrabalho->execute(array(":chave" => $chave));
+
     $dadosDoTrabalho = $pdoResultTrabalho->fetch(PDO::FETCH_ASSOC);
 
     if ($dadosDoTrabalho) {
-        // Preencha as variáveis com os dados do trabalho
         $titulo = $dadosDoTrabalho['titulo'];
         $data_inicio = $dadosDoTrabalho['data_inicio'];
         $data_final = $dadosDoTrabalho['data_final'];
         $quantidade_pessoas = $dadosDoTrabalho['quantidade'];
-        $feedback_aluno = $dadosDoTrabalho['feedback_aluno'];
         $competencias_fk = $dadosDoTrabalho['competencias_fk'];
-        $categoria_fk = $dadosDoTrabalho['categoria_fk'];
         $decricao = $dadosDoTrabalho['descricao'];
-        $anexo = $dadosDoTrabalho['anexo_atividade']; // corrigido para usar a coluna correta
-
+        $anexo = $dadosDoTrabalho['anexo_atividade'];
+        $nome_competencia = $dadosDoTrabalho['nome_competencia'];
+        $categoria = $dadosDoTrabalho['nome_categoria'];
+    
     } else {
         echo 'Erro ao recuperar os dados do trabalho.';
         exit;
@@ -66,8 +72,8 @@ if (isset($_SESSION['matricula_usuario'])) {
     <div>
         <form class="formulario" action="dados.php" method="POST">
             <div class="input-2">
-                <label for="titulo">nome aluno:</label><br>
-                <input type="text" id="titulo" name="pesquisa" required class="inputS">
+                <label for="pesquisa">arquivo</label><br>
+                <input type="text" id="pesquisa" name="pesquisa" required class="inputS">
             </div>
             <div id="botao">
                 <div>
@@ -79,7 +85,7 @@ if (isset($_SESSION['matricula_usuario'])) {
     </div>
 
     <?php
-    
+
     echo "
             <div class='print-atividade'>
             <div class='atividade'>
@@ -101,11 +107,11 @@ if (isset($_SESSION['matricula_usuario'])) {
                 </div>
                 <div class='categorias'>
                     <h2>Categorias </h2>
-                    <p> $categoria_fk</p>
+                    <p>$categoria</p>
                 </div>
                 <div class='competencias'>
                     <h2>Competências</h2>
-                    <p> $competencias_fk</p>
+                    <p> $nome_competencia</p>
                 </div>
                 <div class='arquivos-zip'>
                     $anexo

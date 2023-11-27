@@ -48,8 +48,8 @@ body{
     display: flex;
     box-shadow: 2px 1px 8px 1px ;
     background: #ffffff;
-
 }
+
 .navbar .entraricon{
 
     display: flex;
@@ -174,7 +174,6 @@ input, select, textarea, button {
     background: #57B5CD;
     text-shadow: none;
 }
-/* ---------------------- */
 
 .atividades {
     display: flex;
