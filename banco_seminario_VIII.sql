@@ -74,6 +74,117 @@ VALUES
 
 -- select * from cursos;
 
+------------------------------------------------------------------------------------------------------------
+--#############(categoria)	
+
+	
+create table if not exists categoria (
+	"id_categoria" serial primary key not null,
+	"categoria" varchar(60)
+);
+
+INSERT INTO categoria (categoria) VALUES
+('Resumo'),
+('Resenha'),
+('Relatório'),
+('Artigo'),
+('TCC'),
+('Monografia'),
+('Dissertação'),
+('Tese'),
+('Projeto de pesquisa'),
+('Seminário temático'),
+('Atividade de fixação'),
+('TDE');
+
+------------------------------------------------------------------------------------------------------------
+--#############(competencias)	
+
+
+create table if not exists competencias (
+	"id_competencias" serial primary key not null,
+	"competencias" varchar(60)
+);
+
+INSERT INTO competencias (competencias) VALUES
+('Pensamento crítico'),
+('Tomada de decisões complexas'),
+('Inteligência emocional e empatia'),
+('Criatividade'),
+('Colaboração e trabalho em equipe'),
+('Comunicação interpessoal'),
+('Adaptabilidade e flexibilidade'),
+('Liderança'),
+('Curiosidade e aprendizado contínuo '),
+('Orientação para a mudança');
+
+
+------------------------------------------------------------------------------------------------------------
+--#############(Chama nome categoria )
+
+--drop function obter_nome_categoria;
+
+CREATE OR REPLACE FUNCTION obter_nome_categoria(id__categoria INT)
+RETURNS TEXT AS $$
+DECLARE
+    nome_categoria TEXT;
+BEGIN
+    -- Selecione o nome da categoria com base no ID fornecido
+    SELECT categoria
+    INTO nome_categoria
+    FROM categoria
+    WHERE id_categoria = id__categoria;
+
+    -- Se a categoria não for encontrada, retorne NULL
+    IF NOT FOUND THEN
+        RETURN NULL;
+    END IF;
+
+    RETURN nome_categoria;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT obter_nome_categoria(5);
+
+------------------------------------------------------------------------------------------------------------
+--#############(Chama nome competencias )
+
+--drop function obter_nome_categoria;
+
+CREATE OR REPLACE FUNCTION obter_nome_competencias(id__competencias INT)
+RETURNS TEXT AS $$
+DECLARE
+    nome_competencias TEXT;
+BEGIN
+    -- Selecione o nome da categoria com base no ID fornecido
+    SELECT competencias
+    INTO nome_competencias
+    FROM competencias
+    WHERE id_competencias = id__competencias;
+
+    -- Se a categoria não for encontrada, retorne NULL
+    IF NOT FOUND THEN
+        RETURN NULL;
+    END IF;
+
+    RETURN nome_competencias;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT obter_nome_competencias(5);
+
+
+------------------------------------------------------------------------------------------------------------
+--#############(Teste select)	
+
+SELECT titulo, data_inicio, data_final, quantidade, competencias_fk, anexo_atividade, descricao, 
+competencias.competencias AS nome_competencia, categoria.categoria AS nome_categoria
+FROM trabalhos
+LEFT JOIN competencias ON trabalhos.competencias_fk = competencias.id_competencias 
+LEFT JOIN categoria ON trabalhos.categoria_fk = categoria.id_categoria
+WHERE trabalhos.titulo = 'teste123';
 
 ------------------------------------------------------------------------------------------------------------
 --#############(Função/ Criar)	
@@ -211,60 +322,8 @@ VALUES
 
 
 
-------------------------------------------------------------------------------------------------------------
---#############(categoria)	
-
-	
-create table if not exists categoria (
-	"id_categoria" serial primary key not null,
-	"categoria" varchar(60)
-);
-
-INSERT INTO categoria (categoria) VALUES
-('Resumo'),
-('Resenha'),
-('Relatório'),
-('Artigo'),
-('TCC'),
-('Monografia'),
-('Dissertação'),
-('Tese'),
-('Projeto de pesquisa'),
-('Seminário temático'),
-('Atividade de fixação'),
-('TDE');
-
-------------------------------------------------------------------------------------------------------------
---#############(competencias)	
 
 
-create table if not exists competencias (
-	"id_competencias" serial primary key not null,
-	"competencias" varchar(60)
-);
-
-INSERT INTO competencias (competencias) VALUES
-('Pensamento crítico'),
-('Resolução de problemas complexos'),
-('Criatividade'),
-('Originalidade e iniciativa'),
-('Liderança e influência social'),
-('Pensamento analítico'),
-('Resiliência'),
-('Tolerância e flexibilidade'),
-('Inteligência emocional'),
-('Comunicação assertiva e eficiente'),
-('Aprendizado contínuo'),
-('Digital skills'),
-('Relacionamento interpessoal'),
-('Aptidão para inovação'),
-('Foco em resultados'),
-('Comprometimento'),
-('Proatividade e automotivação'),
-('Administração'),
-('Arquitetura'),
-('Artesanato'),
-('Ciência da Computação');
 
 
 
