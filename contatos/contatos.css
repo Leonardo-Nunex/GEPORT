@@ -4,6 +4,7 @@
     margin: 0px;
     padding: 0px;
     font-family: Poppins,Arial, Helvetica, sans-serif;
+    
 }
 .navbar{
     background-color: #0055A3;
@@ -11,6 +12,11 @@
     top: 0px;
     right: 0px;
     left: 0px;
+}
+body{
+    overflow: hidden;
+    zoom: 0.9; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    height: 150vh;
 }
 .navbar ul{
     display: flex;

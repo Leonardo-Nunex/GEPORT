@@ -9,18 +9,21 @@ body{
     background-image: url(src/logo1.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    
-    
+    overflow: hidden;
+    zoom:0.7; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    height: 100vh;
 }
 .cadastro{
+    font-size: large;
     background:#08687E;
-    max-width: 600px;
+    max-width: 660px;
     height: 100%;
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 5px 5px 10px black;
     border-radius: 20px;
     margin-bottom: 20px;
@@ -51,6 +54,7 @@ body{
     cursor: text;
 }
 .inputS{
+    padding-left: 10px;
     width: 100%;
     height: 30px;
     border: 0px;
@@ -80,13 +84,11 @@ body{
 form input[type=submit]{
     padding: 10px 40px;
     border: 0;
-    border-radius: 3px;
+    border-radius: 10px;
     margin-right: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.6em;
-
-
+    font-size: 1.4em;
 }    
 
 .op{
@@ -97,16 +99,18 @@ form input[type=submit]{
 }
 #sexo{
     font-size: 1.2em;
+    margin-right: 76px;
+    margin-left: 10px;
+    width: 220px;
 }
 .input-2 a{
     text-decoration: none;
     padding: 15px;
     color: black;
     font-family: Poppins,Arial, Helvetica, sans-serif;
-
 }
 .input-4{
-    width: 250px;
+    width: 300px;
     height: 30px;
     border: 0px;
     border-bottom: 1px solid #ccc;
@@ -114,4 +118,35 @@ form input[type=submit]{
     background-color: rgba(0, 0, 0, 0);
     color: white;
     font-size: 1.2em;
+}
+
+#DropDown > label {
+    margin-bottom: -35px;
+    margin-top: -10px;
+    display: inline-block;
+    margin-right: 145px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+#DropDown {
+    position: relative;
+    margin-left: -7px;
+    margin-top: -15px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#voltar{
+    text-align: center;
+    padding: 10px;
+    margin-right: 100px;
+    display: inline-block;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.4em;
 }

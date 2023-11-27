@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Curricular</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <a href="#"><img style="width: 250px;" src="../../GradeCurricular/img/logo.png" alt=""></a>
+            
+            <div class="entrar"><a href="../../perfil/perfil.html">
+                        <div class="entraricon">
+                            <img style="height: 40px;" src="../../GradeCurricular/img/icon.svg" alt="">
+                        </div></a>
+                </div>
+        </ul>
+    </div>
+
+    <div>
+        <h1 id="titulo">Adicionar Trabalhos</h1>
+        <p id="subtitulo">Complete suas informações:</p>
+        <br>
+    </div>
+
+    <!-- Início do formulário -->
+    <!-- Cabeçalho com título e subtítulo-->
+
+
+    <!-- Início do formulário -->
+    <form class="formulario" action="upload.php" method="post" enctype="multipart/form-data">
+
+        <fieldset class="grupo" id="a">
+            <!-- Campo do nome-->
+            <div class="campo">
+                <label for="titulo"><strong>Titulo</strong></label>
+                <input type="text" name="titulo" id="entradas" required>
+            </div>
+
+           
+        </fieldset>
+        <fieldset id="a">
+            <!-- Campo do email -->
+            <div class="campo">
+                <label for="periodo"><strong>Período</strong></label>
+                <select name="periodo" id="entradas">
+                    <option value="1">1º período</option>
+                    <option value="2">2º período</option>
+                    <option value="3">3º período</option>
+                    <option value="4">4º período</option>
+                    <option value="5">5º período</option>
+                    <option value="6">6º período</option>
+                    <option value="7">7º período</option>
+                    <option value="8">8º período</option>
+                    <option value="9">9º período</option>
+                    <option value="10">10º período</option>
+                </select>
+            </div>
+        </fieldset>
+        <form class="formulario">
+
+            <!-- Adicionei campos para Título, Data de Início/Final, Quantidade de Pessoas, Competências e Categoria -->
+            <fieldset class="grupo" id="a">
+                <div class="camposDate-quant">
+                    <div class="campo">
+                        <div class="opcoes-data">
+                            <label for="data_inicio"><strong>Data de Início:</strong></label>
+                            <input type="date" name="data_inicio" id="data_inicio" required>
+                            <label for="data_final"><strong>Data Final:</strong></label>
+                            <input type="date" name="data_final" id="data_final" required>
+                        </div>
+                    </div>
+                    <div class="campo">
+                        <div class="opcoes-quantidade">
+                            <label for="quantidade_pessoas"><strong> Participantes:</strong></label><br>
+                            <input type="radio" name="quantidade_pessoas" id="grupo" value="grupo" required>
+                            <label for="grupo">Grupo</label>
+                            <br>
+                            <input type="radio" name="quantidade_pessoas" id="individual" value="individual" required>
+                            <label for="individual">Individual</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="competências"><strong>Competências</strong></label>
+                    <select name="competências" id="entradas">
+                        <option value="1">Pensamento crítico</option>
+                        <option value="2">Resolução de problemas complexos</option>
+                        <option value="3">Criatividade</option>
+                        <option value="4">Originalidade e iniciativa</option>
+                        <option value="5">Liderança e influência social</option>
+                        <option value="6">Pensamento analítico</option>
+                        <option value="7">Resiliência</option>
+                        <option value="8">Tolerância e flexilidade</option>
+                        <option value="9">Inteligência emocional</option>
+                        <option value="10">Comunicação assertiva e eficiente</option>
+                        <option value="11">Aprendizado contínuo</option>
+                        <option value="12">Digital skills</option>
+                        <option value="13">Relacionamento interpessoal</option>
+                        <option value="14">Aptidão para inovação</option>
+                        <option value="15">Foco em resultados</option>
+                        <option value="16">Comprometimento</option>
+                        <option value="17">Proatividade e automotivação</option>
+                        <option value="18">Administração</option>
+                        <option value="19">Arquitetura</option>
+                        <option value="20">Artesanato</option>
+                        <option value="21">Ciência da Computação</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="categorias"><strong>Categorias</strong></label>
+                    <select name="categorias" id="entradas">
+                        <option value="1">Resumo</option>
+                        <option value="2">Resenha</option>
+                        <option value="3">Relatório</option>
+                        <option value="4">Artigo</option>
+                        <option value="5">TCC</option>
+                        <option value="6">Monografia</option>
+                        <option value="7">Dissertação</option>
+                        <option value="8">Tese</option>
+                        <option value="9">Projeto de Pesquisa</option>
+                        <option value="10">Seminário Temático</option>
+                        <option value="11">Atividade de Fixação</option>
+                        <option value="12">TDE</option>
+                    </select>
+                </div>
+                </div>
+
+            </fieldset>
+
+            <div class="campo">
+                <label for="anexo"><strong>Selecione seu arquivo:</strong></label>
+                <input type="file" name="arquivo">
+            </div>
+
+            <!-- Caixa de texto -->
+            <div class="campo">
+                <br>
+                <label for="comentario"><strong>Comente Sobre: </strong></label>
+                <textarea rows="6" style="width: 26em" id="comentario" name="comentario"></textarea>
+            </div>
+
+
+            <!-- Removi o campo de feedback -->
+
+            <!-- Botoes -->
+            <div id="botao">
+                <div>
+                    <!-- botão Voltar -->
+                    <a class="button1" href="../Tela Inicial/TelaInicial.html">Cancelar</a>
+                </div>
+                <div>
+                    <!--botão Enviar -->
+                    <input class="button2" type="submit" name="Enviar">
+                </div>
+            </div>
+        </form>
+</body>
+
+</html>

@@ -6,11 +6,13 @@
     font-family: Poppins,Arial, Helvetica, sans-serif;
 }
 body{
-    background-image: url(src/logo1.png);
-    background-repeat: no-repeat;
+    background: url('../css/img/background.png') no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    min-height: 100vh;
+    overflow: hidden;
+    zoom:0.9; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    height: 100vh;
 }
 
 .cadastro {
@@ -62,7 +64,6 @@ body{
     background-color: rgba(0, 0, 0, 0);
     color: white;
     font-size: 1.2em;
-    
 }
 .input-2{
     position: relative;

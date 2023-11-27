@@ -6,6 +6,17 @@
     padding: 0px;
     font-family: Poppins,Arial, Helvetica, sans-serif;
 }
+body{
+    font-size: 1em;
+    color: #17293D;
+    text-align: center;
+    background-image: url("../../GradeCurricular/img/background.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+}
+
 .navbar{
     background-color: #0055A3;
     position: sticky;
@@ -31,15 +42,15 @@
     text-decoration: none;
     color: white; 
 }
-.navbar .perfil{
+.navbar .entrar{
     padding: 10px;
     border-radius: 100px;
     display: flex;
     box-shadow: 2px 1px 8px 1px ;
     background: #ffffff;
-
 }
-.navbar .perfilIcon{
+
+.navbar .entraricon{
 
     display: flex;
 }
@@ -54,6 +65,9 @@
     text-align: center;
     padding-top: 2%;
 } 
+#pesquisa{
+    color: black;
+}
 
 #subtitulo {
     font-family: Arial, Helvetica, sans-serif;
@@ -64,17 +78,6 @@
 fieldset{
     border: 0;
     display: inline-block; 
-}
-
-body{
-    font-size: 1em;
-    color: #17293D;
-    text-align: center;
-    background-image: url(img/background.png);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    
 }
 
 input, select, textarea, button {
@@ -101,6 +104,12 @@ input, select, textarea, button {
     box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 
+.select {
+    padding: 0.1em;
+    border: 1px solid ;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
 .formulario {
     width: 40%;
     border: 1px solid black;
@@ -121,6 +130,9 @@ input, select, textarea, button {
     font-family:helvetica, serif;
     text-decoration:none;
     box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.253);
+    margin-top: 10px;
+    display: inline-block;
+            margin-right: 5px;
 }
 
 .button2{
@@ -161,4 +173,50 @@ input, select, textarea, button {
 .button3:hover {
     background: #57B5CD;
     text-shadow: none;
+}
+
+.atividades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 20px;
+}
+
+.print-atividade {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+
+.titulo-atividade h2,
+.data_inicio h2,
+.data_final h2,
+.quantidade_pessoas h2,
+.categorias h2,
+.competencias h2 {
+    color: #333333;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.titulo-atividade p,
+.data_inicio p,
+.data_final p,
+.quantidade_pessoas p,
+.categorias p,
+.competencias p {
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.arquivos-zip {
+    margin-top: 16px;
+    color: #3498db;
+    text-decoration: underline;
+    cursor: pointer;
 }

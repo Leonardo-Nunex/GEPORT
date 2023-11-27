@@ -7,9 +7,12 @@
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
+body{
+    zoom: 0.9; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    height: 100vh;
+}
 .navbar {
     background-color: #0055A3;
-    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -47,7 +50,7 @@
     padding: 10px 44px;
     border-radius: 8px;
     display: flex;
-    box-shadow: 2px 2px 6px 1px;
+    box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.507);
 }
 
 .entrar a {
@@ -75,11 +78,13 @@
     text-align: center;
     margin: 100px;
     margin-top: 20px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 2.2em;
+    font-family: Montserrat,Arial, Helvetica, sans-serif;
+    padding: 20px;
 }
 
 .centro-conteudo {
@@ -92,64 +97,68 @@ h1 {
 
 .texto {
     display: inline-block;
-    border: 2px solid #d9d9d964;
-    padding: 10px;
     text-align: center;
     max-width: 80%;
+    font-size: 1.1em;
 }
 
-.main-imagem {
+.centered-conteudo img {
     max-width: 100%;
-    background-color: #d9d9d98e;
     padding: 5px;
-    margin: 10px;
     height: auto;
     width: 80%;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .centered-images {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    flex-wrap: wrap;
+    margin-top: 40px;
 }
 
-.imagem {
-    background-color: #d9d9d9ad;
-    padding: 5px;
-    margin: 10px;
-    flex: 1;
-    max-width: 300px;
+.imagem img{
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.418);
+    width: 300px;
+    min-width: 400px;
+    height: 300px;
+    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    transition: 0.5s;
+    border-radius: 10px;
 }
-
-.imagem img {
-    max-width: 100%;
-    height: auto;
+.imagem img:hover{
+    transform: scale(1.02);
+    transition: 0.5s;
 }
 
 .quem {
-    text-align: left;
-    margin: 20px;
+    width: 100%;
+    text-align: justify;
 }
 
 .quem h2 {
-    font-size: 24px;
+    font-size: 2.2em;
+    font-family: Montserrat,Arial, Helvetica, sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .quem p {
     font-size: 16px;
     margin-bottom: 20px;
+    font-size: 1.1em;
 }
 
-.quem ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
 
-.quem li {
-    margin-bottom: 10px;
-}
-
-.quem li strong {
-    font-weight: bold;
+.conteudo-final{
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+    color: #17293D;
+    margin: auto;
+    width: 73%;
 }
