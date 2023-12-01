@@ -27,7 +27,7 @@ if (!empty($_POST)) {
                 ':cidade' => $_POST['cidade'],
                 ':data_nascimento' => $_POST['data_nascimento'],
                 ':email' => $_POST['email'],
-                ':senha' => $_POST['senha'],
+                ':senha' => md5($_POST['senha']),
                 
             );
 

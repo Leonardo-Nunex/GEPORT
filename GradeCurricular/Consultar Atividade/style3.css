@@ -146,6 +146,9 @@ input, select, textarea, button {
     text-decoration:none;
     box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.253);
 }
+#pesquisa{
+    padding: 10px;
+}
 
 .button3{
     border:1px solid black; 

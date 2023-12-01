@@ -145,7 +145,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 
-SELECT obter_nome_categoria(5);
 
 ------------------------------------------------------------------------------------------------------------
 --#############(Chama nome competencias )
@@ -172,19 +171,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
-SELECT obter_nome_competencias(5);
-
-
-------------------------------------------------------------------------------------------------------------
---#############(Teste select)	
-
-SELECT titulo, data_inicio, data_final, quantidade, competencias_fk, anexo_atividade, descricao, 
-competencias.competencias AS nome_competencia, categoria.categoria AS nome_categoria
-FROM trabalhos
-LEFT JOIN competencias ON trabalhos.competencias_fk = competencias.id_competencias 
-LEFT JOIN categoria ON trabalhos.categoria_fk = categoria.id_categoria
-WHERE trabalhos.titulo = 'teste123';
 
 ------------------------------------------------------------------------------------------------------------
 --#############(Função/ Criar)	
@@ -267,7 +253,6 @@ create table if not exists disciplina(
 		
 );
 
-select * from disciplina;
 
 
 INSERT INTO disciplina ( codigo_curso_fk, nome, carga_horaria)
@@ -349,7 +334,16 @@ create table if not exists usuario(
 	FOREIGN KEY (codigo_curso_fk) REFERENCES cursos(codigo)
     );
 	
-	select * from usuario;
+	
+	-- Insert User 1
+INSERT INTO usuario (codigo_curso_fk, nome_usuario, cpf, sexo, telefone, endereco, uf, cidade, data_nascimento, email, senha)
+VALUES (402, 'John Doe', '12345678901', 'Male', '123456789', '123 Main St', 'SP', 'Sao Paulo', '1990-01-01', 'john.doe@email.com', 'password123');
+
+-- Insert User 2
+INSERT INTO usuario (codigo_curso_fk, nome_usuario, cpf, sexo, telefone, endereco, uf, cidade, data_nascimento, email, senha)
+VALUES (401, 'Jane Smith', '98765432101', 'Female', '987654321', '456 Oak St', 'RJ', 'Rio de Janeiro', '1995-05-15', 'jane.smith@email.com', 'securepassword456');
+
+
 	
 	
 	------------------------------------------------------------------------------------------------------------
@@ -378,13 +372,130 @@ create table if not exists usuario(
 	
 );
 
+
+-- -- Insert 1
+-- INSERT INTO trabalhos (titulo, data_inicio, data_final, quantidade, feedback_aluno, periodo_trabalhos, competencias_fk, categoria_fk, id_oferta_fk, matricula_usuario_fk, anexo_atividade, descricao)
+-- VALUES ('Trabalho 1', '2023-01-01', '2023-02-01', 'individual', 'Bom trabalho!', 1, 1, 1, 1, 21220805, 'anexo1.pdf', 'Descrição do Trabalho 1');
+
+-- -- Insert 2
+-- INSERT INTO trabalhos (titulo, data_inicio, data_final, quantidade, feedback_aluno, periodo_trabalhos, competencias_fk, categoria_fk, id_oferta_fk, matricula_usuario_fk, anexo_atividade, descricao)
+-- VALUES ('Trabalho 2', '2023-02-01', '2023-03-01', 'grupo', 'Excelente colaboração!', 2, 2, 1, 2, 21287499, 'anexo2.pdf', 'Descrição do Trabalho 2');
+
+-- -- Insert 3
+-- INSERT INTO trabalhos (titulo, data_inicio, data_final, quantidade, feedback_aluno, periodo_trabalhos, competencias_fk, categoria_fk, id_oferta_fk, matricula_usuario_fk, anexo_atividade, descricao)
+-- VALUES ('Trabalho 3', '2023-02-12', '2023-03-01', 'grupo', 'Excelente colaboração!', 2, 2, 1, 2, 21287499, 'anexo2.pdf', 'Descrição do Trabalho 2');
+
+-- INSERT INTO trabalhos (titulo, data_inicio, data_final, quantidade, feedback_aluno, periodo_trabalhos, competencias_fk, categoria_fk, id_oferta_fk, matricula_usuario_fk, anexo_atividade, descricao)
+-- VALUES ('Trabalho 4', '2023-02-12', '2023-03-01', 'grupo', 'Excelente colaboração!', 2, 2, 1, 2, 21287499, 'anexo2.pdf', 'Descrição do Trabalho 2');
+
+-- INSERT INTO trabalhos (titulo, data_inicio, data_final, quantidade, feedback_aluno, periodo_trabalhos, competencias_fk, categoria_fk, id_oferta_fk, matricula_usuario_fk, anexo_atividade, descricao)
+-- VALUES ('Trabalho 5', '2023-02-12', '2023-03-01', 'grupo', 'Excelente colaboração!', 2, 2, 1, 2, 21287499, 'anexo2.pdf', 'Descrição do Trabalho 2');
+
+
+select * from trabalhos;
+
+-- Continue with similar INSERT statements for the remaining rows...
+
+
 ------------------------------------------------------------------------------------------------------------
 --#############(selects)	
 	
-
 	
 select * from oferta;
 select * from usuario;
 select * from cursos;
+select * from trabalhos;
 
 select usuario.id_usuario_pk, trabalhos.data_inicio from usuario join trabalhos on usuario.id_usuario_pk = trabalhos.id_tabalho_pk ;
+
+------------------------------------------------------------------------------------------------------------
+--#############(Teste select)	
+
+
+
+SELECT titulo, data_inicio, data_final, quantidade, competencias_fk, anexo_atividade, descricao, 
+competencias.competencias AS nome_competencia, categoria.categoria AS nome_categoria
+FROM trabalhos
+LEFT JOIN competencias ON trabalhos.competencias_fk = competencias.id_competencias 
+LEFT JOIN categoria ON trabalhos.categoria_fk = categoria.id_categoria
+WHERE trabalhos.titulo = 'Trabalho 1';
+
+
+
+SELECT titulo, data_inicio, data_final, quantidade, competencias_fk, anexo_atividade, descricao, 
+competencias.competencias AS nome_competencia, categoria.categoria AS nome_categoria
+FROM trabalhos
+LEFT JOIN competencias ON trabalhos.competencias_fk = competencias.id_competencias 
+LEFT JOIN categoria ON trabalhos.categoria_fk = categoria.id_categoria
+WHERE trabalhos.titulo = 'Trabalho 1';
+
+CREATE OR REPLACE FUNCTION minha_funcao()
+RETURNS void AS $$
+DECLARE
+    contador integer := 1;
+    trabalho_record trabalhos%ROWTYPE;
+BEGIN
+    -- Início do loop
+    FOR contador IN 1..5 LOOP
+        -- Faça algo dentro do loop
+        -- Pode ser uma consulta SELECT, UPDATE, INSERT, etc.
+        SELECT * INTO trabalho_record
+        FROM trabalhos
+		
+        WHERE matricula_usuario_fk = 21287499 and id_tabalho_pk = contador; -- Corrigido para id_tabalho_pk
+
+        -- Exemplo: exibe o valor do contador e os dados do trabalho
+        RAISE NOTICE 'Valor do contador: %', contador;
+        RAISE NOTICE 'Dados do trabalho: %', trabalho_record;
+
+        -- Aqui você pode fazer o que quiser com os dados do trabalho
+        -- Por exemplo, você pode retornar os dados ou realizar alguma operação.
+
+    END LOOP;
+
+    -- Pode retornar algo se necessário
+    -- RETURN alguma_coisa;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+-- função select retornando os primeiros trabalhos (funcionando)
+select * from minha_funcao();
+
+drop function minha_funcao();
+
+CREATE OR REPLACE FUNCTION minha_funcao()
+RETURNS TABLE (
+    id_trabalho integer,
+    nome_trabalho character varying(70),
+    data_inicio date,
+    data_fim date,
+	quantidade character varying(30),
+	feedback character varying(2000),
+	periodo integer,
+	competencia integer,
+	categoria integer,
+	oferta integer,
+	matricula integer,
+	anexo character varying(1000),
+	descricao character varying(2000)
+) AS $$
+DECLARE
+    contador integer := 1;
+    trabalho_record trabalhos%ROWTYPE;
+BEGIN
+    FOR contador IN 1..5 LOOP
+        SELECT * INTO trabalho_record
+        FROM trabalhos
+        WHERE id_tabalho_pk = contador;
+
+        -- Retornar os dados do trabalho como uma linha da tabela
+        RETURN QUERY SELECT trabalho_record.*;
+    END LOOP;
+
+    -- Não há necessidade de RETURN QUERY após o loop
+    -- porque não há mais linhas para retornar.
+
+END;
+$$ LANGUAGE plpgsql;

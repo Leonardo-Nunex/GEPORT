@@ -50,6 +50,7 @@ if (isset($_SESSION['matricula_usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Curricular</title>
     <link rel="stylesheet" href="style3.css">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
 </head>
 
 <body>

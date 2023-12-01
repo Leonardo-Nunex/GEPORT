@@ -44,6 +44,8 @@ body{
     align-items: center;
     display: flex;
     margin-top: 60px;
+    
+
 }
 .input-2 label{
     position: absolute;

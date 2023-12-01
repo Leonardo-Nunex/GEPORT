@@ -1,18 +1,32 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
     margin: 0;
     padding: 0;
     display: flex;
-    height: 100vh;
-    background-color: #f4f4f4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(../perfil/src/fundo.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+
 }
 
 .sidebar {
     width: 300px;
-    background-image: linear-gradient(to right,#1B2687,#18788E);
+    height: 100%;
+    position: fixed;
+    background-image: linear-gradient(to right, #1B2687, #18788E);
     color: #fff;
     padding: 20px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .profile-pic {
@@ -20,24 +34,124 @@ body {
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
 }
 
 .profile-info {
     margin-bottom: 20px;
 }
 
-.cards-container {
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box;
+button a, #clique{
+    text-decoration: none;
+    color: white;
+}
+#downloadTrabalho{
+    color: white;
+    text-decoration: none;
 }
 
+#downloadTrabalho>p:hover{
+    color: #2f8092;
+}
+
+.btn-atualizar {
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #0C9ABE;
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#btn-voltar, #btn-sair {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #FFAB35;
+    width: 49%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+#btn-sair {
+    background-color: #F21A24;
+}
+
+.cards-container {
+    margin-left: 310px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+}
 .card {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 20px;
+}
+.card_trabalhos {
+    margin: 10px;
+    background-color: #18788e;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    max-width: 300px;
+    min-width: 290px;
+    transition: 1s;
+    flex-direction: column;
+}
+
+.card_apresentacao{
+    text-align: center;
+    background-color: #18788e;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    max-width: 55%;
+    transition: 1s;
+    margin: 15px;
+    height: 200px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.card_trabalhos:hover, .card_apresentacao:hover {
+    box-shadow: 6px 5px 4px rgb(29 2 139 / 30%);
+    transition: 0.6s;
+    transform: scale(1.02);
+    background-color: #FFAB35;
+}
+
+.card_trabalhos h2,
+.card_trabalhos p {
+    color: #fff;
+    margin: 10px;
+    padding: 5px;
+}
+
+.card_trabalhos p {
+    margin-bottom: 10px; /* Espaçamento adicional entre os parágrafos */
+}
+
+.card_trabalhos .card-info {
+    flex-grow: 1; /* Permite que a div cresça para ocupar o espaço disponível */
+    margin-right: 20px; /* Adiciona margem à direita para separar do ícone de anexo */
+}
+
+.card_trabalhos .anexo {
+    max-width: 50px; /* Define uma largura máxima para o ícone de anexo */
 }
 
 .card-title {
@@ -45,6 +159,11 @@ body {
     margin-bottom: 10px;
 }
 
-.card-content {
-    font-size: 14px;
+.botoes {
+    max-height: fit-content;
+}
+
+.botoes_bottom {
+    display: flex;
+    justify-content: space-between;
 }

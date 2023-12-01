@@ -39,7 +39,7 @@ if (isset($_POST['update'])) {
         ));
 
         if ($pdoExec) {
-            header('Location: ../perfil/perfil.html?msgSucesso=DadosCadastrados');
+            header('Location: ../perfil/perfil.php?msgSucesso=DadosCadastrados');
         } else {
             echo 'ERRO, não foi possível atualizar seus dados';
         }

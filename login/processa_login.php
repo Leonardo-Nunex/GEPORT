@@ -5,7 +5,7 @@ if (!empty($_POST)) {
   session_start();
   try {
 
-    $sql = "SELECT email, senha, matricula_usuario FROM  usuario where email = :email AND senha = :senha;";
+    $sql = "SELECT email, senha, matricula_usuario, nome_usuario FROM  usuario where email = :email AND senha = :senha;";
 
     $stmt = $conexao->prepare($sql);
 
@@ -25,6 +25,8 @@ if (!empty($_POST)) {
       $_SESSION['email'] = $result['email'];
       $_SESSION['senha'] = $result['senha'];
       $_SESSION['matricula_usuario'] = $result['matricula_usuario'];
+      $_SESSION['nome_usuario'] = $result['nome_usuario'];
+
 
       header('Location: ../GradeCurricular/Tela Inicial/TelaInicial.html?msgSucesso=SucessLogin');
     } else {
