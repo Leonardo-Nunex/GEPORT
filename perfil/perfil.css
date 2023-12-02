@@ -142,7 +142,8 @@ button a, #clique{
 }
 
 .card_trabalhos p {
-    margin-bottom: 10px; /* Espaçamento adicional entre os parágrafos */
+    margin-bottom: 10px; 
+    word-break: break-all;
 }
 
 .card_trabalhos .card-info {
