@@ -27,8 +27,8 @@ if (!empty($_POST)) {
       $_SESSION['matricula_usuario'] = $result['matricula_usuario'];
       $_SESSION['nome_usuario'] = $result['nome_usuario'];
 
-
       header('Location: ../GradeCurricular/Tela Inicial/TelaInicial.html?msgSucesso=SucessLogin');
+      
     } else {
       echo '<script>alert("Usuário ou senha incorreta!"); window.location="login.html";</script>';
     }

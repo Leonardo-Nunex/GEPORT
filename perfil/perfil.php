@@ -4,12 +4,12 @@ session_start();
 if (isset($_SESSION['matricula_usuario'])) {
     require_once '../conexao/conexao.php';
 
-    $matricula_usuario = $_SESSION['matricula_usuario'];
+    $matriculaUsuario = $_SESSION['matricula_usuario'];
 
     // Consulta para obter os dados do USUARIO  
     $queryUsuario = "SELECT * FROM usuario WHERE matricula_usuario = :matricula_usuario";
     $pdoResultUsuario = $conexao->prepare($queryUsuario);
-    $pdoResultUsuario->execute(array(":matricula_usuario" => $matricula_usuario));
+    $pdoResultUsuario->execute(array(":matricula_usuario" => $matriculaUsuario));
     $dadosDoUsuario = $pdoResultUsuario->fetch(PDO::FETCH_ASSOC);
 
     // Consulta para obter os dados do TRABALHOS 
@@ -23,16 +23,14 @@ if (isset($_SESSION['matricula_usuario'])) {
     LEFT JOIN categoria ON trabalhos.categoria_fk = categoria.id_categoria
     WHERE trabalhos.matricula_usuario_fk = :chave;";
 
-$pdoResultTrabalho = $conexao->prepare($queryTrabalho);
+    $pdoResultTrabalho = $conexao->prepare($queryTrabalho);
 
-$pdoResultTrabalho->execute(array(":chave" => $matricula_usuario));
+    $pdoResultTrabalho->execute(array(":chave" => $matriculaUsuario));
 
-// Recupera todos os trabalhos em um array
-$dadosDosTrabalhos = $pdoResultTrabalho->fetchAll(PDO::FETCH_ASSOC);
+    $dadosDosTrabalhos = $pdoResultTrabalho->fetchAll(PDO::FETCH_ASSOC);
 
-// Itera sobre os trabalhos e imprime os cards
     if ($dadosDoUsuario) {
-        $nome_usuario = $dadosDoUsuario['nome_usuario'];
+        $nomeUsuario = $dadosDoUsuario['nome_usuario'];
         $telefone = $dadosDoUsuario['telefone'];
         $email = $dadosDoUsuario['email'];
     } else {
@@ -47,11 +45,9 @@ $dadosDosTrabalhos = $pdoResultTrabalho->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>Perfil do Usuário</title>
     <link rel="stylesheet" href="perfil.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
@@ -61,7 +57,7 @@ $dadosDosTrabalhos = $pdoResultTrabalho->fetchAll(PDO::FETCH_ASSOC);
     <div class="sidebar">
         <img src="https://via.placeholder.com/100" alt="Profile Picture" class="profile-pic">
         <div class="profile-info">
-            <h2><?php echo $nome_usuario?></h2>
+            <h2><?php echo $nomeUsuario?></h2>
             <p>Descrição do perfil</p>
         </div>
         <div class="contact-info">
@@ -85,23 +81,23 @@ $dadosDosTrabalhos = $pdoResultTrabalho->fetchAll(PDO::FETCH_ASSOC);
         if($dadosDosTrabalhos){
             foreach ($dadosDosTrabalhos as $dadosDoTrabalho) {
                 $titulo = $dadosDoTrabalho['titulo'];
-                $data_inicio = $dadosDoTrabalho['data_inicio'];
-                $data_final = $dadosDoTrabalho['data_final'];
-                $quantidade_pessoas = $dadosDoTrabalho['quantidade'];
-                $competencias_fk = $dadosDoTrabalho['competencias_fk'];
+                $dataInicio = $dadosDoTrabalho['data_inicio'];
+                $dataFinal = $dadosDoTrabalho['data_final'];
+                $quantidadePessoas = $dadosDoTrabalho['quantidade'];
+                $competencias = $dadosDoTrabalho['competencias_fk'];
                 $decricao = $dadosDoTrabalho['descricao'];
                 $anexo = $dadosDoTrabalho['anexo_atividade'];
-                $nome_competencia = $dadosDoTrabalho['nome_competencia'];
+                $nomeCompetencia = $dadosDoTrabalho['nome_competencia'];
                 $categoria = $dadosDoTrabalho['nome_categoria'];
             
                 echo "
                     <div class='card_trabalhos'>
                         <h1> $titulo</h1>
                         <h2>Data:</h2>
-                        <p>$data_inicio / $data_final</p>
-                        <p>$quantidade_pessoas</p>
+                        <p>$dataInicio / $dataFinal</p>
+                        <p>$quantidadePessoas</p>
                         <p>$categoria</p>
-                        <p> $nome_competencia</p>
+                        <p> $nomeCompetencia</p>
                         <a href='../baixarTrabalhos/download_arquivo.php?id=$anexo' id='downloadTrabalho'>
                             <p>$anexo</p>
                         </a>

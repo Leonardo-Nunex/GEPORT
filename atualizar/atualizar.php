@@ -4,12 +4,12 @@ session_start();
 if (isset($_SESSION['matricula_usuario'])) {
     require_once '../conexao/conexao.php';
 
-    $matricula_usuario = $_SESSION['matricula_usuario'];
+    $matriculaUsuario = $_SESSION['matricula_usuario'];
 
     // Consulta para obter os dados do usuário
     $queryUsuario = "SELECT * FROM usuario WHERE matricula_usuario = :matricula_usuario";
     $pdoResultUsuario = $conexao->prepare($queryUsuario);
-    $pdoResultUsuario->execute(array(":matricula_usuario" => $matricula_usuario));
+    $pdoResultUsuario->execute(array(":matricula_usuario" => $matriculaUsuario));
     $dadosDoUsuario = $pdoResultUsuario->fetch(PDO::FETCH_ASSOC);
 
     // Consulta para obter os dados do curso
@@ -22,28 +22,28 @@ if (isset($_SESSION['matricula_usuario'])) {
         $nome = $dadosDoCurso['nome'];
         $codigoCurso = $dadosDoCurso['codigo'];
     } else {
-        echo 'Erro ao recuperar o nome do curso.';
+        echo '<script>alert("Erro ao recuperar dados do curso"); window.location="atualizarDados.php";<script>';
         exit;
     }
 
     if ($dadosDoUsuario) {
         // Preencha as variáveis com os dados do usuário
-        $nome_usuario = $dadosDoUsuario['nome_usuario'];
+        $nomeUsuario = $dadosDoUsuario['nome_usuario'];
         $cpf = $dadosDoUsuario['cpf'];
         $sexo = $dadosDoUsuario['sexo'];
         $telefone = $dadosDoUsuario['telefone'];
         $endereco = $dadosDoUsuario['endereco'];
         $uf = $dadosDoUsuario['uf'];
         $cidade = $dadosDoUsuario['cidade'];
-        $data_nascimento = $dadosDoUsuario['data_nascimento'];
+        $dataNascimento = $dadosDoUsuario['data_nascimento'];
         $email = $dadosDoUsuario['email'];
-        // $senha = md5($dadosDoUsuario['senha']);
+        $senha = $dadosDoUsuario['senha'];
     } else {
-        echo 'Erro ao recuperar os dados do usuário.';
+        echo '<script>alert("Erro ao recuperar os dados do usuário"); window.location="atualizarDados.php";<script>';
         exit;
     }
 } else {
-    echo 'Você não está logado ou não tem permissão para acessar esta página.';
+    echo '<script>alert("Você não está logado ou não tem permissão para acessar esta página"); window.location="atualizarDados.php";<script>';
     exit;
 }
 ?>
@@ -91,7 +91,7 @@ if (isset($_SESSION['matricula_usuario'])) {
                 <form action="atualizar_dados.php" method="post">
                     <h1>ATUALIZAR CADASTRO</h1>
                     <div class="input-2">
-                        <input type="text" class="inputS" required name="nome_usuario" value="<?php echo $nome_usuario; ?>">
+                        <input type="text" class="inputS" required name="nome_usuario" value="<?php echo $nomeUsuario; ?>">
                         <i class='bx bx-user'></i>
                         <label for="nome">Nome</label>
                     </div>
@@ -147,7 +147,7 @@ if (isset($_SESSION['matricula_usuario'])) {
                         <label for="cidade">Cidade</label>
                     </div>
                     <div class="input-2">
-                        <input type="date" class="inputS" required name="data_nascimento" value="<?php echo $data_nascimento; ?>">
+                        <input type="date" class="inputS" required name="data_nascimento" value="<?php echo $dataNascimento; ?>">
                         <i class='bx bx-user'></i>
                         <label for="data_nascimento"></label>
                     </div>

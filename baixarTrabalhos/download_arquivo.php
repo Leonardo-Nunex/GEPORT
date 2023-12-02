@@ -5,35 +5,37 @@ require_once '../conexao/conexao.php';
 
 if (isset($_GET['id'])) {
     try {
-        $id_trabalho = $_GET['id'];
+        $idTrabalho = $_GET['id'];
 
         $sql = "SELECT anexo_atividade, matricula_usuario_fk FROM trabalhos WHERE anexo_atividade = :id AND matricula_usuario_fk = :matricula";
         $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':id', $id_trabalho, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $idTrabalho, PDO::PARAM_INT);
         $stmt->bindParam(':matricula', $_SESSION['matricula_usuario'], PDO::PARAM_STR);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            $caminho_arquivo = "../GradeCurricular/Cadastrar Portfolio/dadosUsuarios/" . $row['matricula_usuario_fk'] . "/" . $row['anexo_atividade'];
+            $caminhoArquivo = "../GradeCurricular/Cadastrar Portfolio/dadosUsuarios/" . $row['matricula_usuario_fk'] . "/" . $row['anexo_atividade'];
 
 
             // Verifica se o arquivo existe antes de iniciar o download
-            if (file_exists($caminho_arquivo)) {
+            if (file_exists($caminhoArquivo)) {
                 header('Content-Type: application/octet-stream');
-                header('Content-Disposition: attachment; filename="' . basename($caminho_arquivo) . '"');
-                readfile($caminho_arquivo);
+                header('Content-Disposition: attachment; filename="' . basename($caminhoArquivo) . '"');
+                readfile($caminhoArquivo);
                 exit;
             } else {
-                echo "Arquivo não encontrado.";
+                echo '<script>alert("Arquivo não encontrado"); window.location="../perfil/perfil.php";<script>';
+                exit;
             }
         } else {
-            echo "Você não tem permissão para baixar este arquivo.";
+            echo '<script>alert("Você não tem permissão para baixar este arquivo"); window.location="../perfil/perfil.php";<script>';
+            exit;
         }
     } catch (Exception $erro) {
-        echo "Erro ao processar o download.";
-        die($erro->getMessage());
+        echo '<script>alert("Erro ao processar o download"); window.location="../perfil/perfil.php";<script>';
+        die();
     }
 } else {
-    echo "ID do trabalho não fornecido.";
+    echo '<script>alert("ID do trabalho não fornecido"); window.location="../perfil/perfil.php";<script>';
 }
