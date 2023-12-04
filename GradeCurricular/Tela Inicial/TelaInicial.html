@@ -7,36 +7,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grade Curricular</title>
     <link rel="stylesheet" href="style1.css">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
 </head>
 
 <body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <div class="navbar">
         <ul>
             <a href="#"><img style="width: 250px;" src="../../GradeCurricular/img/logo.svg" alt=""></a>
-            <div class="perfil">
-                <a href="../../perfil/perfil.html">
-                    <div class="entraricon">
-                        <img style="height: 40px;" src="../../GradeCurricular/img/icon.svg" alt="">
-                    </div>
-                </a>
+
+            <div class="entrar" onclick="toggleMenu()">
+                <div class="entraricon">
+                    <img style="height: 60px;" src="../img/icon.svg" alt="icone">
+                    <p id="usernamePlaceholder">Carregando...</p>
+                </div>
             </div>
         </ul>
     </div>
-    <div id="divs">
-        <div>
-            <h1 id="titulo">GRADE CURRICULAR</h1>
-            <p id="subtitulo">Selecione uma opção:</p>
+    <div class="menu-1">
+        <nav id="menu">
+            <ul>
+                <li><a href="../../perfil/perfil.php">Perfil</a></li>
+                <li id="port-add"><a href="../Cadastrar Portfolio/cadastro.html">Adicionar Portfólio</a></li>
+                <li><a href="../../Encerrar Sessao/logout.php">Sair</a></li>
+            </ul>
+        </nav>
+        <script>
+            function toggleMenu() {
+                var menu = document.getElementById('menu');
+                menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+            }
+
+            // Chamada AJAX para obter o nome do usuário
+            $.ajax({
+                url: 'get_username.php',
+                method: 'GET',
+                success: function (response) {
+                    // Atualiza o conteúdo HTML com o nome do usuário
+                    $('#usernamePlaceholder').text(response);
+                },
+                error: function () {
+                    console.error('Erro ao obter o nome do usuário.');
+                }
+            });
+        </script>
+    </div>
+    <div class="corpo">
+        <div class="conteudo">
+            <section class="conteudo-1">
+                <section class="borda-1">
+                    <h1>PORTFÓLIO ACADÊMICO</h1>
+                    <p>Uma ferramenta que armazena suas atividades, trabalhos incluindo textos, relatos, artigos e
+                        apostilas.</p>
+                </section>
+
+                <div id="topicos">
+                    <ul>
+                        <li>Simples de usar</li>
+                        <li>Ensino e desenvolvimento educacional</li>
+                        <li>Contribuições para sua faculdade e comunidade</li>
+                    </ul>
+                </div>
+            </section>
+            <img src="../../home/src/Union.png" alt="">
         </div>
 
-        <div id="link_1">
-            <a href="../Cadastrar Portfolio/cadastro.html">
-                <button id="botao">Adicionar Trabalhos</button>
-            </a>
-            <a href="../Consultar Atividade/buscardados.html">
-                <button id="botao">Consultar Trabalhos</button>
-            </a>
-        </div>
+    </div>
+    <div class="conteudo-2">
+        <section class="conteudo-3">
+            <h1>O QUE É UM PORTIFÓLIO ACADÊMICO?</h1>
+            <section class="item-1">
+                <img src="../../home/src/wireframe (1) 1.png" alt="">
+                <p>Uma ferramenta versátil que ajuda a documentar, demonstrar e destacar
+                    as realizações e habilidades de um estudante ou
+                    profissional no contexto acadêmico.</p>
+            </section>
+            <section class="item-2">
+                <p>A principal finalidade de um portfólio acadêmico é fornecer uma visão holística
+                    das habilidades e realizações de um estudante, que pode ser útil para fins de
+                    candidatura a empregos, programas de pós-graduação, bolsas de estudo ou
+                    apenas para documentar o progresso acadêmico ao longo do tempo.</p>
+                <img src="../../home/src/bram-naus-n8Qb1ZAkK88-unsplash 1.png" alt="">
+            </section>
+        </section>
 
+    </div>
+    <div class="rodape">
+        <div class="rodape-1">
+            <h1 id="isolado">FÁCIL, SIMPLES E ORGANIZADO.</h1>
+            <div class="itens">
+                <section class="item-4">
+                    <img src="../../home/src/img1.png" alt="">
+                    <h1>FÁCIL</h1>
+                    <p>Intuitivo e <br> acessivél</p>
+                </section>
+                <section class="item-5">
+                    <img src="../../home/src/img2.png" alt="">
+                    <h1>SIMPLES</h1>
+                    <p> Documentação <br>
+                        e <br>
+                        exemplos de projetos práticos</p>
+                </section>
+                <section class="item-6">
+                    <img src="../../home/src/img3.png" alt="">
+                    <h1>ORGANIZADO</h1>
+                    <p>Organização sistemática do <br>
+                        desenvolvimento do <br>
+                        estudante</p>
+                </section>
+            </div>
+            <div class="footer">
+                <p>
+                    Você pode entrar em contato conosco através do nosso contato:<a href="">(98)3213-8011</a>
+                </p>
+            </div>
+
+        </div>
     </div>
 </body>
 

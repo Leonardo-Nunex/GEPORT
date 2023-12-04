@@ -10,16 +10,12 @@
 body{
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-image: url("../../GradeCurricular/img/background.png");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    zoom: 0.9; 
+    height: 150vh;
+    
 }
 .navbar{
     background-color: #0055A3;
-    position: sticky;
     top: 0px;
     left: 0px;
     right: 0px;
@@ -53,72 +49,156 @@ body{
 .navbar .entraricon{
 
     display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.navbar .entraricon p{
+    color: white;
+    font-size: 1.2em;
 }
 .navbar .links a:hover{
     transition: 0.4s;
     color: rgba(255, 255, 255, 0.219);
 }
-
-/* Pagina */
-#titulo {
-    font-family:"montserrat", Helvetica, sans-serif;
-    color: #17293D;
-    text-align: center;
-    margin-top: 5%;
-    font-size: 24px;
-}
-
-#subtitulo {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #17293D;
-    text-align: center;
-}
-
-
-#divs{
-    width: 40%;
-    border: 1px solid black;
-    padding-bottom: 20px;
-    margin-bottom: 2%;
-    background-color: rgba(255, 255, 255, 0.561);
+#menu {
     position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: 
-    translate(-50%, -50%);
-}
-
-#link_1{
-    font-family: "Arial", Helvetica, sans-serif;
-    color: #2C2C2C;
+    top: 80px;
+    right: 0px;
+    display: none;
+    background-color: rgba(131, 196, 255, 1)
+    ;
     text-align: center;
-    margin-top: 2%;
+    width: 300px;
+    font-size: 1.4em;
 }
 
-#link_2{
-    font-family: Arial, Helvetica, sans-serif;
+#menu a{
+    color: black;
+    text-decoration: none;
+}
+#menu ul{
+    list-style: none;
+}
+#menu li{
+    padding: 10px;
+}
+#menu a:hover{
+    color: white;  
+}
+#port-add{
+    background: rgba(103, 182, 255, 1);
+
+}
+.conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 100px;
     color: #2C2C2C;
-    text-align: center;
-    margin-top: 1%;
+    margin-bottom: 100px;
+}
+#topicos{
+    margin-top: 350px; 
+ }
+.conteudo img {
+    padding: 20px 20px 50px 50px;
+    margin-right: 10px;
+    width: 1000px;
 }
 
-#botao {
+.borda-1 {
+    border-left: 8px solid #2C2C2C;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+.borda-1 h1{
+    font-size: 3em;
+
+}
+.borda-1 p{
     font-size: 1.2em;
-    background: #1F71B4;
-    border: 0;
-    color: #ffffff;
-    padding: 0.2em 0.6em;
-    display: inline-block;
-    border-radius: 20px;
+    max-width: 450px;
+
+}
+
+.conteudo ul{
+    margin-left: 30px;
+    font-size: 1.4em;
+}
+.conteudo-3 h1{
+    font-size: 3em;
+}
+.conteudo-2 h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2C2C2C;
+}
+.conteudo-3 .item-1{
+    display: flex;
+    max-width: 1000px;
+    margin-left: 600px;
+    padding-top: 50px;
+    align-items: center;
     
 }
+.conteudo-3 .item-2{
+    display: flex;
+    max-width: 1000px;
+    padding: 50px;
+    margin-left: 450px;
+    align-items: center;
+}
+.rodape{
+    background-color: #E7E7E7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-#botao:hover {
-    background: #57B5CD;
+.rodape-1 #isolado{
+    justify-content: center;
+    display: flex;
+    color:#2C2C2C;
+    padding: 40px;
+    font-family: Montserrat, Arial, Helvetica, sans-serif ;
+    font-size: 3em;
+    padding-top: 100px;
 }
-#botao{
-    cursor: pointer;
+
+.footer{
+    justify-content: center;
+    display: flex;
+    font-size: 1.2em;
+    margin-top: 60px;
+    margin-bottom: 30px;
 }
-.navbar .perfil:hover{
-    background: #ffffff6b;
+.itens{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.itens img{
+    width: 350px;
+    height: 300px;
+    padding-top: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.itens p{
+    display: flex;
+    justify-content: center;
+    color:#2C2C2C;
+    font-size: 1.2em;
+    text-align: center;
+}
+.itens h1{
+    display: flex;
+    justify-content: center;
+    font-size: 4em;
+    color:#2C2C2C;
+}
+.conteudo-2{
+    margin-bottom: 100px;
 }

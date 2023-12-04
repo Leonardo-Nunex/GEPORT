@@ -4,12 +4,12 @@ session_start();
 if (isset($_SESSION['matricula_usuario'])) {
     require_once '../conexao/conexao.php';
 
-    $matricula_usuario = $_SESSION['matricula_usuario'];
+    $matriculaUsuario = $_SESSION['matricula_usuario'];
 
     // Consulta para obter os dados do usuário
     $queryUsuario = "SELECT * FROM usuario WHERE matricula_usuario = :matricula_usuario";
     $pdoResultUsuario = $conexao->prepare($queryUsuario);
-    $pdoResultUsuario->execute(array(":matricula_usuario" => $matricula_usuario));
+    $pdoResultUsuario->execute(array(":matricula_usuario" => $matriculaUsuario));
     $dadosDoUsuario = $pdoResultUsuario->fetch(PDO::FETCH_ASSOC);
 
     // Consulta para obter os dados do curso
@@ -22,28 +22,28 @@ if (isset($_SESSION['matricula_usuario'])) {
         $nome = $dadosDoCurso['nome'];
         $codigoCurso = $dadosDoCurso['codigo'];
     } else {
-        echo 'Erro ao recuperar o nome do curso.';
+        echo '<script>alert("Erro ao recuperar dados do curso"); window.location="atualizarDados.php";<script>';
         exit;
     }
 
     if ($dadosDoUsuario) {
         // Preencha as variáveis com os dados do usuário
-        $nome_usuario = $dadosDoUsuario['nome_usuario'];
-        $cpf = intval($dadosDoUsuario['cpf']);
+        $nomeUsuario = $dadosDoUsuario['nome_usuario'];
+        $cpf = $dadosDoUsuario['cpf'];
         $sexo = $dadosDoUsuario['sexo'];
         $telefone = $dadosDoUsuario['telefone'];
         $endereco = $dadosDoUsuario['endereco'];
         $uf = $dadosDoUsuario['uf'];
         $cidade = $dadosDoUsuario['cidade'];
-        $data_nascimento = $dadosDoUsuario['data_nascimento'];
+        $dataNascimento = $dadosDoUsuario['data_nascimento'];
         $email = $dadosDoUsuario['email'];
         $senha = $dadosDoUsuario['senha'];
     } else {
-        echo 'Erro ao recuperar os dados do usuário.';
+        echo '<script>alert("Erro ao recuperar os dados do usuário"); window.location="atualizarDados.php";<script>';
         exit;
     }
 } else {
-    echo 'Você não está logado ou não tem permissão para acessar esta página.';
+    echo '<script>alert("Você não está logado ou não tem permissão para acessar esta página"); window.location="atualizarDados.php";<script>';
     exit;
 }
 ?>
@@ -56,22 +56,47 @@ if (isset($_SESSION['matricula_usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="atualizar.css">
     <title>Atualização de Cadastro
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     </title>
 </head>
 
 <body>
+    <script>
+        function formatarCPF(cpf) {
+            // Remove caracteres não numéricos
+            cpf = cpf.replace(/\D/g, '');
+            
+            // Adiciona a máscara
+            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            
+            // Atualiza o valor no campo
+            document.getElementById('cpf').value = cpf;
+        }
+    </script>
+    <script>
+        function formatarTelefone(telefone) {
+            // Remove caracteres não numéricos
+            telefone = telefone.replace(/\D/g, '');
+            
+            // Adiciona a máscara
+            telefone = telefone.replace(/(\d{2})(\d{9})/, '($1)$2');
+            
+            // Atualiza o valor no campo
+            document.getElementById('telefone').value = telefone;
+        }
+    </script>
     <div class="conteudo-1">
         <div class="cadastro">
             <div class="itens-form">
                 <form action="atualizar_dados.php" method="post">
                     <h1>ATUALIZAR CADASTRO</h1>
                     <div class="input-2">
-                        <input type="text" class="inputS" required name="nome_usuario" value="<?php echo $nome_usuario; ?>">
+                        <input type="text" class="inputS" required name="nome_usuario" value="<?php echo $nomeUsuario; ?>">
                         <i class='bx bx-user'></i>
                         <label for="nome">Nome</label>
                     </div>
                     <div class="input-2">
-                        <input type="number" class="inputS" id="cpf" required name="cpf" value="<?php echo $cpf; ?>">
+                    <input type="text" id="cpf" oninput="formatarCPF(this.value)" maxlength="14" name="cpf" required class="inputS" value="<?php echo $cpf; ?>">
                         <i class='bx bx-user'></i>
                         <label for="cpf">CPF</label>
                     </div>
@@ -102,7 +127,7 @@ if (isset($_SESSION['matricula_usuario'])) {
                         </div>
                     </div>
                     <div class="input-2">
-                        <input type="tel" class="inputS" required name="telefone" value="<?php echo $telefone; ?>">
+                    <input type="text" id="telefone" oninput="formatarTelefone(this.value)" maxlength="13" name="telefone" required class="inputS" value="<?php echo $telefone; ?>">
                         <i class='bx bx-user'></i>
                         <label for="telefone">Telefone</label>
                     </div>
@@ -122,7 +147,7 @@ if (isset($_SESSION['matricula_usuario'])) {
                         <label for="cidade">Cidade</label>
                     </div>
                     <div class="input-2">
-                        <input type="date" class="inputS" required name="data_nascimento" value="<?php echo $data_nascimento; ?>">
+                        <input type="date" class="inputS" required name="data_nascimento" value="<?php echo $dataNascimento; ?>">
                         <i class='bx bx-user'></i>
                         <label for="data_nascimento"></label>
                     </div>
@@ -135,13 +160,9 @@ if (isset($_SESSION['matricula_usuario'])) {
                         <input type="password" class="inputS" required name="senha" value="<?php echo $senha; ?>">
                         <i class='bx bx-user'></i>
                         <label for="senha">Senha</label>
-                    </div>
-
-
-                    <div>
-                    <button id="voltar" type="button" onclick="window.location.href='../perfil/perfil.html'">Cancelar</button>
-                    </div>
+                    </div>           
                     <div class="input-2">
+                    <button id="voltar" type="button" onclick="window.location.href='../perfil/perfil.php'">Cancelar</button>
                         <input type="submit" name="update" required placeholder="Update Data">
                         <i class='bx bx-user'></i>
                     </div>

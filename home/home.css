@@ -13,8 +13,9 @@
     left: 0px;
 }
 body{
-    width: 100%;
-    zoom: 0.9; /* Ajuste o valor conforme necessário para reduzir o zoom */
+    justify-content: center;
+    align-items: center;
+    zoom: 0.9; 
     height: 150vh;
 }
 #topicos{
@@ -47,7 +48,7 @@ body{
     padding: 10px;
     border-radius: 8px;
     display: flex;
-    box-shadow: 2px 2px 6px 1px ;
+    box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.507);
 }
 .navbar .entraricon{
     display: flex;
